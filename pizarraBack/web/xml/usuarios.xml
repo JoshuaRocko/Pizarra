@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<usuarios xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="usuarios.xsd">
+    <usuario id="1" nombreUsr="rperedo" contrasena="rpv" />
+    <usuario id="2" nombreUsr="richie" contrasena="pswd" />
+    <usuario id="3" nombreUsr="joshua" contrasena="rocko" />
+    <usuario id="4" nombreUsr="grandioso" contrasena="yasmon" />
+</usuarios>

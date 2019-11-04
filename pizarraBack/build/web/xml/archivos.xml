@@ -1,0 +1,11 @@
+<archivos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="archivos.xsd">
+    <archivo numero="1" nombre="ejercicio1" id="rperedo"/>
+    <archivo numero="2" nombre="ejercicio1a" id="richie"/>
+    <archivo numero="3" nombre="ejercicio2" id="rperedo"/>
+    <archivo numero="4" nombre="ejercicio3" id="rperedo"/>
+    <archivo numero="5" nombre="ejercicio2a" id="richie"/>
+    <archivo numero="6" nombre="ejercicio1b" id="joshua"/>
+    <archivo numero="7" nombre="ejercicio2b" id="joshua"/>
+    <archivo numero="8" nombre="ejercicio1c" id="grandioso"/>
+    <archivo numero="9" nombre="ejercicio2c" id="grandioso"/>
+</archivos>

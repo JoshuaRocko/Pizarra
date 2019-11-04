@@ -1,0 +1,14 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:complexType name="file">
+        <xs:attribute name="numero" type="xs:integer"/>
+        <xs:attribute name="nombre" type="xs:string"/>
+        <xs:attribute name="id" type="xs:string"/>
+    </xs:complexType>
+    <xs:element name="archivos">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="archivo" type="file" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

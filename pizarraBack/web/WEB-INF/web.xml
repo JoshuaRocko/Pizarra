@@ -4,9 +4,17 @@
         <servlet-name>servletLogin</servlet-name>
         <servlet-class>servlets.servletLogin</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>servletTablaArchivos</servlet-name>
+        <servlet-class>servlets.servletTablaArchivos</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>servletLogin</servlet-name>
         <url-pattern>/servletLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>servletTablaArchivos</servlet-name>
+        <url-pattern>/servletTablaArchivos</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

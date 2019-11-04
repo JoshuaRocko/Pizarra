@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-//import './App.css';
-//import 'bootstrap/dist/css/bootstrap.min.css';
-import './componentes/formLogin/vendor/bootstrap/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './componentes/formLogin/fonts/font-awesome-4.7.0/css/font-awesome.min.css';
 import './componentes/formLogin/fonts/Linearicons-Free-v1.0.0/icon-font.min.css';
 import './componentes/formLogin/vendor/animate/animate.css';
@@ -11,7 +9,8 @@ import './componentes/formLogin/vendor/select2/select2.min.css';
 import './componentes/formLogin/vendor/daterangepicker/daterangepicker.css';
 import './componentes/formLogin/css/util.css';
 import './componentes/formLogin/css/main.css';
-//import Header from './componentes/Header.js';
+import ReactDOM from 'react-dom';
+import Main from './main';
 
 class App extends Component {
 
@@ -31,15 +30,24 @@ class App extends Component {
     this.setState({ contra: event.target.value })
   }
 
-  handleSubmit(event) { 
+  handleSubmit(event) {
     event.preventDefault();
-    const data = new FormData(event.target);
+    //const data = new FormData(event.target);
 
-    let url = 'http://localhost:8080/pizarraBack/servletLogin?usr=' + this.state.usuario + "&psw=" + this.state.contra;
-    alert('URL ' + url);
+    let url = 'http://localhost:8080/pizarraBack/servletLogin?usr=' + this.state.usuario + "&psw=" + this.state.contra + "&tkn=24";
+    //alert('URL ' + url);
     fetch(url).then(response => response.text()).then(data => {
-      alert(data);
-      window.location.href = data;
+      //alert(data);
+      //window.location.href = data;
+      if (data == 'Invalido') {
+        alert('Houston, we have a problem.');
+        this.setState({contra: '', usuario:''});
+      } else {
+        ReactDOM.render(
+          <Main usr={data}/>,
+          document.getElementById('root')
+        );
+      }
     });
   }
 
@@ -49,7 +57,7 @@ class App extends Component {
         <div className="container-login100">
           <div className="wrap-login100 p-t-30 p-b-50">
             <span className="login100-form-title p-b-41">Iniciar sesión.</span>
-            <form className="login100-form validate-form p-b-33 p-t-5" onSubmit= {this.handleSubmit}>
+            <form className="login100-form validate-form p-b-33 p-t-5" onSubmit={this.handleSubmit}>
               <div className="wrap-input100 validate-input" data-validate="Ingresa tu nombre de usuario.">
                 <input className="input100" type="text" name="usr" placeholder="Nombre de usuario." value={this.state.usuario} onChange={this.handleChange1}></input>
                 <span className="focus-input100" data-placeholder="&#xe82a;"></span>
@@ -69,27 +77,6 @@ class App extends Component {
       </div>
     );
   }
-  /*
-    handleSubmit() {
-      alert('enviando');
-    }
-    
-      render() {
-        return (
-          <div className="App">
-            <Header />
-            <form className="form-login" method="get" onSubmit={this.handleSubmit}>
-              <h1 className="h3 mb-3 font-weight-normal">Iniciar sesión.</h1>
-              <label htmlFor="inputUsuario" className="sr-only">Nombre de usuario.</label>
-              <input type="text" id="inputUsuario" className="form-control" placeholder="Nombre de usuario." required name="usr"></input>
-              <label htmlFor="inputPassword" className="sr-only">Contraseña.</label>
-              <input type="password" id="inputPassword" name="psw" className="form-control" placeholder="Contraseña." required></input>
-              <button className="btn btn-lg btn-dark btn-block" type="submit">Iniciar sesión.</button>
-              <p className="mt-5 mb-3 text-muted">&copy; 2019</p>
-            </form>
-          </div>
-        );
-      }*/
 }
 
 export default App;
