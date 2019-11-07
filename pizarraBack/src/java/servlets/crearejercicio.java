@@ -13,6 +13,7 @@ public class crearejercicio extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        String user = request.getParameter('idUsr')
         /* TODO output your page here. You may use following sample code. */
         out.println("<html lang=\"en\">\n" +
 "    <head>\n" +
