@@ -4,6 +4,7 @@ const canvas = document.getElementById('canvas');
 const context = canvas.getContext('2d');
 context.lineJoin = 'bevel';
 context.lineCap = 'round';
+context.globalCompositeOperation = 'source-over';
 
 /* Agregamos eventos al canvas */
 
@@ -62,7 +63,6 @@ function decreaseWidth(event) {
 
 function setColor(event) {
   color = event.target.id;
-  console.log(color);
 }
 
 /* Funciones para empezar a dibujar en el canvas */
@@ -89,6 +89,17 @@ function dibujaMouse(evento) {
       lineWidth,
       true
     );
+    if (TogetherJS.running) {
+      TogetherJS.send({
+        type: 'draw',
+        color: color,
+        x1: x,
+        y1: y,
+        x2: evento.layerX - this.offsetLeft,
+        y2: evento.layerY - this.offsetTop,
+        lineWidth: lineWidth
+      });
+    }
     x = evento.layerX - this.offsetLeft;
     y = evento.layerY - this.offsetTop;
   }
@@ -107,24 +118,13 @@ function dibujaLinea(color, x1, y1, x2, y2, context, lineWidth, save) {
   if (save) {
     lines.push([color, x1, y1, x2, y2, lineWidth]);
   }
-  if (TogetherJS.running) {
-    TogetherJS.send({
-      type: 'draw',
-      color: color,
-      x1: x1,
-      y1: y1,
-      x2: x2,
-      y2: y2,
-      lineWidth: lineWidth
-    });
-  }
 }
 
 TogetherJS.hub.on('draw', function(msg) {
   if (!msg.sameUrl) {
     return;
   }
-  draw(
+  dibujaLinea(
     msg.color,
     msg.x1,
     msg.y1,
@@ -134,11 +134,6 @@ TogetherJS.hub.on('draw', function(msg) {
     msg.lineWidth,
     false
   );
-});
-
-$('.user-color-pick').click(function() {
-  setColor(TogetherJS.require('peers').Self.color);
-  changeMouse();
 });
 
 // /* Guadar Archivo*/
