@@ -124,7 +124,7 @@ TogetherJS.hub.on('draw', function(msg) {
   if (!msg.sameUrl) {
     return;
   }
-  draw(
+  dibujaLinea(
     msg.color,
     msg.x1,
     msg.y1,
