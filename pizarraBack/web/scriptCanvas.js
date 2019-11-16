@@ -8,10 +8,10 @@ context.globalCompositeOperation = 'source-over';
 
 /* Agregamos eventos al canvas */
 
-canvas.addEventListener('mousemove', dibujaMouse);
-canvas.addEventListener('mousedown', empezarDibujo);
-canvas.addEventListener('mouseup', empezarDibujo);
-document.addEventListener('mouseover', empezarDibujo);
+canvas.addEventListener('mousemove', handle_mouseMove);
+canvas.addEventListener('mousedown', start_stop_Drawing);
+canvas.addEventListener('mouseup', start_stop_Drawing);
+document.addEventListener('mouseover', start_stop_Drawing);
 
 /* Obtenemos los botones para los colores */
 
@@ -51,7 +51,6 @@ var lines = [];
 
 function increaseWidth(event) {
   lineWidth += 2;
-  console.log(lineWidth);
 }
 
 function decreaseWidth(event) {
@@ -67,24 +66,25 @@ function setColor(event) {
 
 /* Funciones para empezar a dibujar en el canvas */
 
-function empezarDibujo(evento) {
-  if (evento.type === 'mouseup' || evento.type === 'mouseover') {
+function start_stop_Drawing(event) {
+  if (event.type === 'mouseup' || event.type === 'mouseover') {
     dibuja = false;
-  } else if (evento.type === 'mousedown') {
+  } else if (event.type === 'mousedown') {
+    console.log(event);
     dibuja = true;
-    x = evento.layerX - this.offsetLeft;
-    y = evento.layerY - this.offsetTop;
+    x = event.pageX - this.offsetLeft;
+    y = event.pageY - this.offsetTop;
   }
 }
 
-function dibujaMouse(evento) {
+function handle_mouseMove(event) {
   if (dibuja) {
-    dibujaLinea(
+    drawLine(
       color,
       x,
       y,
-      evento.layerX - this.offsetLeft,
-      evento.layerY - this.offsetTop,
+      event.pageX - this.offsetLeft,
+      event.pageY - this.offsetTop,
       context,
       lineWidth,
       true
@@ -95,18 +95,18 @@ function dibujaMouse(evento) {
         color: color,
         x1: x,
         y1: y,
-        x2: evento.layerX - this.offsetLeft,
-        y2: evento.layerY - this.offsetTop,
+        x2: event.pageX - this.offsetLeft,
+        y2: event.pageY - this.offsetTop,
         lineWidth: lineWidth
       });
     }
-    x = evento.layerX - this.offsetLeft;
-    y = evento.layerY - this.offsetTop;
+    x = event.pageX - this.offsetLeft;
+    y = event.pageY - this.offsetTop;
   }
 }
 
-function dibujaLinea(color, x1, y1, x2, y2, context, lineWidth, save) {
-  console.log(x1, y1, x2, y2);
+function drawLine(color, x1, y1, x2, y2, context, lineWidth, save) {
+  //console.log(x1, y1, x2, y2);
   context.beginPath();
   context.strokeStyle = color;
   context.lineWidth = lineWidth;
@@ -124,7 +124,7 @@ TogetherJS.hub.on('draw', function(msg) {
   if (!msg.sameUrl) {
     return;
   }
-  dibujaLinea(
+  drawLine(
     msg.color,
     msg.x1,
     msg.y1,
@@ -136,20 +136,62 @@ TogetherJS.hub.on('draw', function(msg) {
   );
 });
 
-// /* Guadar Archivo*/
+TogetherJS.hub.on('togetherjs.hello', function(msg) {
+  if (!msg.sameUrl) {
+    return;
+  }
+  TogetherJS.send({
+    type: 'drawAllLines',
+    lines: lines
+  });
+});
 
-// /* Obtenemos boton para guardar */
-// const saveBtn = document.getElementById('save');
-// saveBtn.addEventListener('click', saveCanvas);
+TogetherJS.hub.on('drawAllLines', function(msg) {
+  if (!msg.sameUrl) {
+    return;
+  }
+  for (i in msg.lines) {
+    drawLine(
+      msg.lines[i][0],
+      msg.lines[i][1],
+      msg.lines[i][2],
+      msg.lines[i][3],
+      msg.lines[i][4],
+      context,
+      msg.lines[i][5],
+      false
+    );
+  }
+  lines = msg.lines;
+});
 
-// /* Funcion para convertir en JSON  */
+/* Guadar Archivo*/
 
-// function saveCanvas() {
-//   let canvasContent = canvas.toDataURL();
-//   let data = { image: canvasContent };
-//   let dataJson = JSON.stringify(data);
-//   console.log(dataJson);
-// }
+/* Obtenemos boton para guardar */
+const saveBtn = document.getElementById('save');
+saveBtn.addEventListener('click', saveCanvas);
+
+/* Funcion para convertir en JSON  */
+
+function saveCanvas() {
+  //let exerciseData = { lines: lines };
+  // let dataJson = JSON.stringify(exerciseData);
+  // console.log(dataJson);
+  var canvasContents = canvas.toDataURL();
+  var data = { image: canvasContents, date: Date.now() };
+  var string = JSON.stringify(data);
+  var file = new Blob([string], {
+    type: 'application/json'
+  });
+
+  // trigger a click event on an <a> tag to open the file explorer
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(file);
+  a.download = 'data.json';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
 
 // /* Load Archivo */
 // const reader = new FileReader();
