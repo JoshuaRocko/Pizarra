@@ -1,23 +1,24 @@
 import React, { Component } from 'react';
-import {
-    Table,
-    ButtonGroup,
-    Button,
-    Container,
-    Row,
-    Col
-} from 'react-bootstrap';
+import { Table, ButtonGroup, Button, Container, Row, Col } from 'react-bootstrap';
+import {withRouter, Redirect} from 'react-router-dom';
 
 class Tabla extends Component {
     constructor(props) {
         super(props);
-        this.state = { ejercicios: [] };
+        this.state = { ejercicios: [], redirect:false};
+        this.logout = this.logout.bind(this);
+    }
+
+    logout(){
+        sessionStorage.setItem('usuario', '');
+        sessionStorage.clear();
+        this.setState({redirect: true});
     }
 
     componentDidMount() {
         fetch(
             'http://localhost:8080/pizarraBack/servletTablaArchivos?idUsr=' +
-                this.props.usr
+            this.props.usr
         )
             .then(res => res.json())
             .then(data => {
@@ -34,6 +35,9 @@ class Tabla extends Component {
     };
 
     render() {
+        if(this.state.redirect){
+            return(<Redirect to={'/'}/>)
+        }
         if (this.state.ejercicios.length > 0) {
             const listar = this.state.ejercicios.map(ejercicio => {
                 return (
@@ -81,7 +85,8 @@ class Tabla extends Component {
                             </Button>
                         </Col>
                         <Col md={{ span: 3, offset: 3 }}>
-                            <Button variant='dark' className='pull-right'>
+                        
+                            <Button variant='dark' className='pull-right' onClick={this.logout}>
                                 Cerrar sesión.
                             </Button>
                         </Col>
@@ -103,4 +108,4 @@ class Tabla extends Component {
         }
     }
 }
-export default Tabla;
+export default withRouter(Tabla);
