@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './login';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Login from './components/login';
 import * as serviceWorker from './serviceWorker';
+import { BrowserRouter, Route, Switch} from 'react-router-dom';
+import Principal from './components/Principal';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+class Index extends Component {
+    render() {
+        return (
+            <div>
+            <Switch>
+                <Route exact path="/" component={Login} />
+                <Route exact strict path="/main/" component={Principal} />
+                <Route path="*" component={()=> "404 Not Found"}/>
+            </Switch>
+            </div>
+        );
+    }
+}
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
+ReactDOM.render(<BrowserRouter><Index /></BrowserRouter>, document.getElementById('root'));
 serviceWorker.unregister();
