@@ -44,7 +44,7 @@ btnDecreaseWidth.addEventListener('click', decreaseWidth);
 /* Inicialización de variables */
 
 var dibuja = false;
-var color = 'blue';
+var color = '#37B2F0';
 var lineWidth = 3;
 var lines = [];
 /* Funciones para incrementar o decrementar ancho de linea */
@@ -64,7 +64,8 @@ function setColor(event) {
   color = event.target.id;
 }
 
-/* Funciones para empezar a dibujar en el canvas */
+/* Funcion para habilitar o deshabilitar 
+  dibujar en el canvas */
 
 function start_stop_Drawing(event) {
   if (event.type === 'mouseup' || event.type === 'mouseover') {
@@ -76,6 +77,8 @@ function start_stop_Drawing(event) {
     y = event.pageY - this.offsetTop;
   }
 }
+
+/* Funcion para dibujar en el canvas */
 
 function handle_mouseMove(event) {
   if (dibuja) {
@@ -89,6 +92,7 @@ function handle_mouseMove(event) {
       lineWidth,
       true
     );
+    /* Dibujar para los demás usuarios */
     if (TogetherJS.running) {
       TogetherJS.send({
         type: 'draw',
@@ -105,8 +109,9 @@ function handle_mouseMove(event) {
   }
 }
 
+/* Función que dibuja la línea */
+
 function drawLine(color, x1, y1, x2, y2, context, lineWidth, save) {
-  //console.log(x1, y1, x2, y2);
   context.beginPath();
   context.strokeStyle = color;
   context.lineWidth = lineWidth;
@@ -114,11 +119,14 @@ function drawLine(color, x1, y1, x2, y2, context, lineWidth, save) {
   context.lineTo(x2, y2);
   context.stroke();
   context.closePath();
-  //guardamos las líneas que se dibujaron
+  /* Guardamos las líneas que se dibujaron, si se llama la funcion
+  desde la comunicación de Together, no se guarda */
   if (save) {
     lines.push([color, x1, y1, x2, y2, lineWidth]);
   }
 }
+
+/* Función para dibujar líneas de otros usuarios */
 
 TogetherJS.hub.on('draw', function(msg) {
   if (!msg.sameUrl) {
@@ -135,6 +143,9 @@ TogetherJS.hub.on('draw', function(msg) {
     false
   );
 });
+
+/* Funciones para dibujar el canvas cuando un nuevo
+  usuario se une a la sesión */
 
 TogetherJS.hub.on('togetherjs.hello', function(msg) {
   if (!msg.sameUrl) {
@@ -168,29 +179,21 @@ TogetherJS.hub.on('drawAllLines', function(msg) {
 /* Guadar Archivo*/
 
 /* Obtenemos boton para guardar */
+
 const saveBtn = document.getElementById('save');
 saveBtn.addEventListener('click', saveCanvas);
 
 /* Funcion para convertir en JSON  */
 
 function saveCanvas() {
-  //let exerciseData = { lines: lines };
-  // let dataJson = JSON.stringify(exerciseData);
-  // console.log(dataJson);
-  var canvasContents = canvas.toDataURL();
-  var data = { image: canvasContents, date: Date.now() };
-  var string = JSON.stringify(data);
-  var file = new Blob([string], {
-    type: 'application/json'
-  });
-
-  // trigger a click event on an <a> tag to open the file explorer
-  var a = document.createElement('a');
-  a.href = URL.createObjectURL(file);
-  a.download = 'data.json';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
+  const usr = sessionStorage.getItem('usuario');
+  let exerciseData = {
+    usuario: usr,
+    lines: lines,
+    date: new Date()
+  };
+  let dataJson = JSON.stringify(exerciseData);
+  console.log(dataJson);
 }
 
 // /* Load Archivo */
