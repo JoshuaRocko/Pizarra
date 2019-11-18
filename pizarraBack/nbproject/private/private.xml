@@ -3,20 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/JoshuaRocko/Desktop/New%20folder/pizarra/pizarraBack/web/xml/archivos.xsd</file>
-            <file>file:/C:/Users/JoshuaRocko/Desktop/New%20folder/pizarra/pizarraBack/src/java/servlets/servletTablaArchivos.java</file>
-            <file>file:/C:/Users/JoshuaRocko/Desktop/New%20folder/pizarra/pizarraBack/src/java/servlets/servletLogin.java</file>
-            <file>file:/C:/Users/JoshuaRocko/Desktop/New%20folder/pizarra/pizarraBack/web/usuarios.xml</file>
-            <file>file:/C:/Users/JoshuaRocko/Desktop/New%20folder/pizarra/pizarraBack/web/xml/archivos.xml</file>
-            <file>file:/C:/Users/JoshuaRocko/Desktop/New%20folder/pizarra/pizarraBack/web/xml/usuarios.xsd</file>
-            <file>file:/C:/Users/JoshuaRocko/Desktop/New%20folder/pizarra/pizarraBack/web/index.html</file>
-            <file>file:/C:/Users/JoshuaRocko/Desktop/New%20folder/pizarra/pizarraBack/web/xml/usuarios.xml</file>
-=======
-            <file>file:/home/joshuarocko/Desktop/pizarra/pizarraBack/src/java/servlets/servletLogin.java</file>
-            <file>file:/home/joshuarocko/Desktop/pizarra/pizarraBack/src/java/servlets/servletTablaArchivos.java</file>
-            <file>file:/home/joshuarocko/Desktop/pizarra/pizarraBack/src/java/servlets/crearejercicio.java</file>
->>>>>>> saving-canvas
+            <file>file:/C:/Users/JoshuaRocko/Desktop/proyecto/pizarra/pizarraBack/src/java/servlets/crearejercicio.java</file>
+            <file>file:/C:/Users/JoshuaRocko/Desktop/proyecto/pizarra/pizarraBack/web/crearejercicio.html</file>
+            <file>file:/C:/Users/JoshuaRocko/Desktop/proyecto/pizarra/pizarraBack/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/JoshuaRocko/Desktop/proyecto/pizarra/pizarraBack/web/META-INF/context.xml</file>
+            <file>file:/C:/Users/JoshuaRocko/Desktop/proyecto/pizarra/pizarraBack/src/java/servlets/servletTablaArchivos.java</file>
+            <file>file:/C:/Users/JoshuaRocko/Desktop/proyecto/pizarra/pizarraBack/web/styleEjercicio.css</file>
+            <file>file:/C:/Users/JoshuaRocko/Desktop/proyecto/pizarra/pizarraBack/web/scriptCanvas.js</file>
+            <file>file:/C:/Users/JoshuaRocko/Desktop/proyecto/pizarra/pizarraBack/src/conf/MANIFEST.MF</file>
+            <file>file:/C:/Users/JoshuaRocko/Desktop/proyecto/pizarra/pizarraBack/src/java/servlets/servletLogin.java</file>
         </group>
     </open-files>
 </project-private>
