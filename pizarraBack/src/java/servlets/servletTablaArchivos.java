@@ -3,7 +3,6 @@ package servlets;
 import com.google.gson.Gson;
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -25,7 +24,7 @@ public class servletTablaArchivos extends HttpServlet {
         response.addHeader("Access-Control-Allow-Origin", "http://localhost:3000");
         
         if (request.getParameter("idUsr") != null) {
-            String idUsr = request.getParameter("idUsr").toString();
+            String idUsr = request.getParameter("idUsr");
             ArrayList<String> ejercicios = new ArrayList<>();
             try {
                 SAXBuilder builder = new SAXBuilder();
@@ -36,9 +35,9 @@ public class servletTablaArchivos extends HttpServlet {
                 List lista = raiz.getChildren("archivo");
                 for (int i = 0; i < lista.size(); i++) {
                     Element elemento = (Element) lista.get(i);
-                    String ide = elemento.getAttributeValue("id");
+                    String ide = elemento.getAttributeValue("usuario");
                     if (idUsr.compareTo(ide) == 0) {
-                        ejercicios.add(elemento.getAttributeValue("nombre"));
+                        ejercicios.add(elemento.getAttributeValue("numero"));
                     }
                 }
                 if (!ejercicios.isEmpty()) {

@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import { Table, ButtonGroup, Button, Container, Row, Col } from 'react-bootstrap';
-import {withRouter, Redirect} from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 
 class Tabla extends Component {
     constructor(props) {
         super(props);
-        this.state = { ejercicios: [], redirect:false};
+        this.state = { ejercicios: [], redirect: false };
         this.logout = this.logout.bind(this);
     }
 
-    logout(){
+    logout() {
         sessionStorage.setItem('usuario', '');
         sessionStorage.clear();
-        this.setState({redirect: true});
+        this.setState({ redirect: true });
     }
 
     componentDidMount() {
@@ -31,18 +31,18 @@ class Tabla extends Component {
     handleCrearEjercicio = e => {
         window.location.href =
             'http://localhost:8080/pizarraBack/crearejercicio?idUsr=' +
-            this.props.usr;
+            this.props.usr + "&idArchivo=nuevo";
     };
 
     render() {
-        if(this.state.redirect){
-            return(<Redirect to={'/'}/>)
+        if (this.state.redirect) {
+            return (<Redirect to={'/'} />)
         }
         if (this.state.ejercicios.length > 0) {
             const listar = this.state.ejercicios.map(ejercicio => {
                 return (
                     <tr>
-                        <td>{ejercicio}</td>
+                        <td>Ejercicio {ejercicio}</td>
                         <td>
                             <div>
                                 <ButtonGroup aria-label='Acciones'>
@@ -85,7 +85,7 @@ class Tabla extends Component {
                             </Button>
                         </Col>
                         <Col md={{ span: 3, offset: 3 }}>
-                        
+
                             <Button variant='dark' className='pull-right' onClick={this.logout}>
                                 Cerrar sesión.
                             </Button>

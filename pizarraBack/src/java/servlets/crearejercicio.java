@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class crearejercicio extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -19,6 +20,7 @@ public class crearejercicio extends HttpServlet {
         out.println("<meta charset=\"UTF-8\" />");
         out.println("<link rel=\"stylesheet\" href=\"styleEjercicio.css\" />");
         out.println("<title>Crear ejercicio</title>");
+        out.println("<script src=\"http://code.jquery.com/jquery-latest.min.js\"></script>");
         out.println("</head>");
         out.println("<body>");
         out.println("<h1 class=\"titulo\">Crear ejercicio</h1>");
