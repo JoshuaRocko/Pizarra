@@ -34,6 +34,7 @@ public class crearejercicio extends HttpServlet {
         out.println("<button type=\"button\" id=\"decreaseWidth\" class=\"btn btn2\">-</button>");
         out.println("<button onclick=\"TogetherJS(this); return false;\" class=\"btn btn1\">Start TogetherJS</button>");
         out.println("<button type=\"button\" id=\"save\">Save</button>");
+        out.println("<button type=\"button\" id=\"back\">Back</button>");
         out.println("<script src=\"https://togetherjs.com/togetherjs-min.js\"></script>");
         out.println("<script src=\"scriptCanvas.js\"></script>");
         out.println("</div>");
