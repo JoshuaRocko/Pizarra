@@ -196,10 +196,6 @@ function saveCanvas() {
     console.log(dataJson);
 }
 
-/* Obtenemos boton para regresar */
-
-const backBtn = document.getElementById('back');
-backBtn.addEventListener('click', window.location.href='http://localhost:3000/main/');
 
 // /* Load Archivo */
 // const reader = new FileReader();
