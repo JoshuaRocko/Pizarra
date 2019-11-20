@@ -67,7 +67,8 @@ public class guardarCanvas extends HttpServlet {
                     while (ite.hasNext()) {
                         Element elemento = (Element) ite.next();
                         String ide = elemento.getAttributeValue("usuario");
-                        if (usr.compareTo(ide) == 0) {
+                        String num = elemento.getAttributeValue("numero");
+                        if (usr.compareTo(ide) == 0 && num.compareTo(idArchivo) == 0) {
                             ite.remove();
                         }
                     }

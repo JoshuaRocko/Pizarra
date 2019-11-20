@@ -24,6 +24,10 @@
         <servlet-name>cargarCanvasXML</servlet-name>
         <servlet-class>servlets.cargarCanvasXML</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>eliminarEjercicio</servlet-name>
+        <servlet-class>servlets.eliminarEjercicio</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>servletLogin</servlet-name>
         <url-pattern>/servletLogin</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>cargarCanvasXML</servlet-name>
         <url-pattern>/cargarCanvasXML</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>eliminarEjercicio</servlet-name>
+        <url-pattern>/eliminarEjercicio</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

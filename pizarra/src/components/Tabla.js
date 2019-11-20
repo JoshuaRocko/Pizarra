@@ -5,8 +5,9 @@ import { withRouter, Redirect } from 'react-router-dom';
 class Tabla extends Component {
     constructor(props) {
         super(props);
-        this.state = { ejercicios: [], redirect: false };
+        this.state = { ejercicios: [], redirect: false, ejercicioBorrar: '' };
         this.logout = this.logout.bind(this);
+        this.handleBorrarEjercicio = this.handleBorrarEjercicio.bind(this);
     }
 
     logout() {
@@ -34,6 +35,30 @@ class Tabla extends Component {
             this.props.usr + "&idArchivo=nuevo";
     };
 
+    handleBorrarEjercicio(event) {
+        event.preventDefault();
+        let ejerc = event.target.name;
+        let url = 'http://localhost:8080/pizarraBack/eliminarEjercicio?idUsr=' + this.props.usr + '&idArchivo=' + ejerc;
+        fetch(url).then(response => response.text()).then(data => {
+            if (data === 'eliminado') {
+                alert('Se eliminó el ejercicio.');
+                fetch(
+                    'http://localhost:8080/pizarraBack/servletTablaArchivos?idUsr=' +
+                    this.props.usr
+                )
+                    .then(res => res.json())
+                    .then(data => {
+                        this.setState({ ejercicios: data });
+                        console.log(this.state.ejercicios);
+                    })
+                    .catch(console.log);
+            } else {
+                alert('Houston, we have a problem.');
+            }
+        });
+
+    }
+
     render() {
         if (this.state.redirect) {
             return (<Redirect to={'/'} />)
@@ -49,7 +74,10 @@ class Tabla extends Component {
                                     <Button
                                         variant='outline-info'
                                         className='boton'
+                                        name={"Ejercicio" + ejercicio}
                                         size='sm'
+                                        href={'http://localhost:8080/pizarraBack/crearejercicio?idUsr=' +
+                                            this.props.usr + "&idArchivo=" + ejercicio + '&ver=1'}
                                     >
                                         Ver ejercicio
                                     </Button>
@@ -57,6 +85,8 @@ class Tabla extends Component {
                                         variant='outline-secondary'
                                         className='boton'
                                         size='sm'
+                                        href={'http://localhost:8080/pizarraBack/crearejercicio?idUsr=' +
+                                            this.props.usr + "&idArchivo=" + ejercicio}
                                     >
                                         Modificar ejercicio
                                     </Button>
@@ -64,6 +94,8 @@ class Tabla extends Component {
                                         variant='outline-dark'
                                         className='boton'
                                         size='sm'
+                                        name={ejercicio}
+                                        onClick={this.handleBorrarEjercicio}
                                     >
                                         Eliminar ejercicio
                                     </Button>
