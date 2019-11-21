@@ -1,5 +1,4 @@
 /* Obtenemos el canvas */
-
 const canvas = document.getElementById('canvas');
 const context = canvas.getContext('2d');
 context.lineJoin = 'bevel';
@@ -7,14 +6,12 @@ context.lineCap = 'round';
 context.globalCompositeOperation = 'source-over';
 
 /* Agregamos eventos al canvas */
-
 canvas.addEventListener('mousemove', handle_mouseMove);
 canvas.addEventListener('mousedown', start_stop_Drawing);
 canvas.addEventListener('mouseup', start_stop_Drawing);
 document.addEventListener('mouseover', start_stop_Drawing);
 
 /* Obtenemos los botones para los colores */
-
 const btnBlack = document.getElementById('black');
 const btnRed = document.getElementById('#F04537');
 const btnYellow = document.getElementById('#F7D42A');
@@ -23,7 +20,6 @@ const btnGreen = document.getElementById('#6DD02D');
 const btnErase = document.getElementById('white');
 
 /* Eventos para los botones */
-
 btnBlack.addEventListener('click', setColor);
 btnRed.addEventListener('click', setColor);
 btnYellow.addEventListener('click', setColor);
@@ -32,23 +28,20 @@ btnGreen.addEventListener('click', setColor);
 btnErase.addEventListener('click', setColor);
 
 /* Botones para incrementar o decrementar ancho de linea*/
-
 const btnIncreaseWidth = document.getElementById('increaseWidth');
 const btnDecreaseWidth = document.getElementById('decreaseWidth');
 
 /*Eventos para incrementar o decrementar ancho de linea */
-
 btnIncreaseWidth.addEventListener('click', increaseWidth);
 btnDecreaseWidth.addEventListener('click', decreaseWidth);
 
 /* Inicialización de variables */
-
 var dibuja = false;
 var color = '#37B2F0';
 var lineWidth = 3;
 var lines = [];
-/* Funciones para incrementar o decrementar ancho de linea */
 
+/* Funciones para incrementar o decrementar ancho de linea */
 function increaseWidth(event) {
     lineWidth += 2;
 }
@@ -60,14 +53,12 @@ function decreaseWidth(event) {
 }
 
 /* Funcion para cambiar color */
-
 function setColor(event) {
     color = event.target.id;
 }
 
 /* Funcion para habilitar o deshabilitar 
  dibujar en el canvas */
-
 function start_stop_Drawing(event) {
     if (event.type === 'mouseup' || event.type === 'mouseover') {
         dibuja = false;
@@ -80,7 +71,6 @@ function start_stop_Drawing(event) {
 }
 
 /* Funcion para dibujar en el canvas */
-
 function handle_mouseMove(event) {
     if (dibuja) {
         drawLine(
@@ -111,7 +101,6 @@ function handle_mouseMove(event) {
 }
 
 /* Función que dibuja la línea */
-
 function drawLine(color, x1, y1, x2, y2, context, lineWidth, save) {
     context.beginPath();
     context.strokeStyle = color;
@@ -135,7 +124,6 @@ function drawLine(color, x1, y1, x2, y2, context, lineWidth, save) {
 }
 
 /* Función para dibujar líneas de otros usuarios */
-
 TogetherJS.hub.on('draw', function (msg) {
     if (!msg.sameUrl) {
         return;
@@ -154,7 +142,6 @@ TogetherJS.hub.on('draw', function (msg) {
 
 /* Funciones para dibujar el canvas cuando un nuevo
  usuario se une a la sesión */
-
 TogetherJS.hub.on('togetherjs.hello', function (msg) {
     if (!msg.sameUrl) {
         return;
@@ -187,17 +174,15 @@ TogetherJS.hub.on('drawAllLines', function (msg) {
 /* Guadar Archivo*/
 
 /* Obtenemos boton para guardar */
-
 const saveBtn = document.getElementById('save');
 saveBtn.addEventListener('click', saveCanvas);
 
 /* Funcion para convertir en JSON  */
-
 function saveCanvas() {
     const usr = obtenerValorParametro('idUsr');
-        const ide = obtenerValorParametro('idArchivo') != null ? obtenerValorParametro('idArchivo') : 'nuevo';
+        const ide = obtenerValorParametro('idArchivo');
     $.ajax({
-        url: 'http://localhost:8080/pizarraBack/guardarCanvas',
+        url: 'guardarCanvas',
         data: {datos: JSON.stringify(lines), usr: usr, idArchivo: ide},
         type: 'get',
         cache: false,
@@ -208,9 +193,9 @@ function saveCanvas() {
             alert('error');
         }
     });
-    console.log(dataJson);
 }
 
+/*Función para obtener los parámetros de la url.*/
 function obtenerValorParametro(sParametroNombre) {
     var sPaginaURL = window.location.search.substring(1);
     var sURLVariables = sPaginaURL.split('&');
@@ -222,24 +207,3 @@ function obtenerValorParametro(sParametroNombre) {
     }
     return null;
 }
-
-// /* Load Archivo */
-// const reader = new FileReader();
-// const load = document.getElementById('load');
-// load.addEventListener('change', loadJson);
-
-// function loadJson() {
-//   if (this.files[0]) {
-//     reader.readAsText(this.files[0]);
-//   }
-// }
-
-// reader.onload = function() {
-//   let data = JSON.parse(reader.result);
-//   let image = new Image();
-//   image.onload = () => {
-//     context.clearRect(0, 0, canvas.width, canvas.height);
-//     context.drawImage(image, 0, 0);
-//   };
-//   image.src = data.image;
-// };

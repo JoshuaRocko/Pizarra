@@ -207,3 +207,38 @@ function obtenerValorParametro(sParametroNombre) {
     }
     return null;
 }
+
+function dibujar(lineas) {
+    for (i in lineas) {
+        drawLine(
+                lineas[i].color,
+                lineas[i].x1,
+                lineas[i].y1,
+                lineas[i].x2,
+                lineas[i].y2,
+                context,
+                lineas[i].lineWidth,
+                true
+                );
+    }
+}
+
+function dibujaCanvas() {
+    const idUser = obtenerValorParametro('idUsr');
+    const idArchivo = obtenerValorParametro('idArchivo');
+    $.ajax({
+        url: 'cargarCanvasXML',
+        data: {idUser: idUser, idArchivo: idArchivo},
+        type: 'get',
+        cache: false,
+        success: function (data) {
+            dibujar(JSON.parse(data));
+        },
+        error: function () {
+            alert('error');
+        }
+    });
+}
+
+
+window.onload = dibujaCanvas;

@@ -3,6 +3,8 @@ import VentanaModal from './VentanaModal';
 import Header from './Header';
 import Tabla from './Tabla';
 import { Redirect } from 'react-router-dom';
+import {Container} from 'react-bootstrap';
+import BtnPrincipales from './BtnPrincipales';
 
 class Principal extends Component {
     constructor(props) {
@@ -22,7 +24,11 @@ class Principal extends Component {
                         cuerpo={'A continuación se mostrará'
                             + ' una lista con tus pizarrones guardados.'} />
                     <Header />
-                    <Tabla usr={usr} />
+                    <Container>
+                        <BtnPrincipales usr={usr}/>
+                        <Tabla usr={usr} />
+                    </Container>
+
                 </div>
             );
         }

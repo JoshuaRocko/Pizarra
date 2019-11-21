@@ -1,64 +1,221 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archivos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="archivos.xsd">
-  <archivo numero="1" usuario="rperedo" />
-  <archivo numero="3" usuario="rperedo" />
-  <archivo numero="4" usuario="rperedo" />
   <archivo numero="6" usuario="joshua" />
   <archivo numero="7" usuario="joshua" />
   <archivo numero="8" usuario="grandioso" />
   <archivo numero="9" usuario="grandioso" />
-  <archivo numero="10" usuario="rperedo">
-    <linea color="#37B2F0" x1="234" y1="176" x2="268" y2="236" lineWidth="3" />
-    <linea color="#37B2F0" x1="268" y1="236" x2="288" y2="269" lineWidth="3" />
-    <linea color="#37B2F0" x1="288" y1="269" x2="466" y2="346" lineWidth="3" />
+  <archivo numero="8" usuario="undefined">
+    <linea color="#37B2F0" x1="303" y1="156" x2="303" y2="164" lineWidth="3" />
+    <linea color="#37B2F0" x1="303" y1="164" x2="303" y2="184" lineWidth="3" />
+    <linea color="#37B2F0" x1="303" y1="184" x2="308" y2="206" lineWidth="3" />
+    <linea color="#37B2F0" x1="308" y1="206" x2="520" y2="390" lineWidth="3" />
+    <linea color="#37B2F0" x1="520" y1="390" x2="584" y2="368" lineWidth="3" />
+    <linea color="#37B2F0" x1="584" y1="368" x2="602" y2="356" lineWidth="3" />
+    <linea color="#37B2F0" x1="602" y1="356" x2="645" y2="330" lineWidth="3" />
   </archivo>
-  <archivo numero="11" usuario="richie">
-    <linea color="#37B2F0" x1="130" y1="170" x2="132" y2="178" lineWidth="3" />
-    <linea color="#37B2F0" x1="132" y1="178" x2="141" y2="205" lineWidth="3" />
-    <linea color="#37B2F0" x1="141" y1="205" x2="147" y2="219" lineWidth="3" />
-    <linea color="#37B2F0" x1="147" y1="219" x2="155" y2="234" lineWidth="3" />
-    <linea color="#37B2F0" x1="155" y1="234" x2="164" y2="247" lineWidth="3" />
-    <linea color="#37B2F0" x1="164" y1="247" x2="174" y2="262" lineWidth="3" />
-    <linea color="#37B2F0" x1="174" y1="262" x2="183" y2="274" lineWidth="3" />
-    <linea color="#37B2F0" x1="183" y1="274" x2="194" y2="282" lineWidth="3" />
-    <linea color="#37B2F0" x1="194" y1="282" x2="205" y2="287" lineWidth="3" />
-    <linea color="#37B2F0" x1="205" y1="287" x2="211" y2="289" lineWidth="3" />
-    <linea color="#37B2F0" x1="211" y1="289" x2="220" y2="291" lineWidth="3" />
-    <linea color="#37B2F0" x1="220" y1="291" x2="224" y2="291" lineWidth="3" />
-    <linea color="#37B2F0" x1="224" y1="291" x2="229" y2="292" lineWidth="3" />
-    <linea color="#37B2F0" x1="229" y1="292" x2="238" y2="293" lineWidth="3" />
-    <linea color="#37B2F0" x1="238" y1="293" x2="242" y2="293" lineWidth="3" />
-    <linea color="#37B2F0" x1="242" y1="293" x2="244" y2="293" lineWidth="3" />
-    <linea color="#37B2F0" x1="244" y1="293" x2="245" y2="293" lineWidth="3" />
-    <linea color="#37B2F0" x1="245" y1="293" x2="247" y2="293" lineWidth="3" />
-    <linea color="#37B2F0" x1="247" y1="293" x2="252" y2="293" lineWidth="3" />
-    <linea color="#37B2F0" x1="252" y1="293" x2="263" y2="293" lineWidth="3" />
-    <linea color="#37B2F0" x1="263" y1="293" x2="276" y2="293" lineWidth="3" />
-    <linea color="#37B2F0" x1="276" y1="293" x2="303" y2="293" lineWidth="3" />
-    <linea color="#37B2F0" x1="303" y1="293" x2="323" y2="293" lineWidth="3" />
-    <linea color="#37B2F0" x1="323" y1="293" x2="343" y2="293" lineWidth="3" />
-    <linea color="#37B2F0" x1="343" y1="293" x2="362" y2="291" lineWidth="3" />
-    <linea color="#37B2F0" x1="362" y1="291" x2="380" y2="284" lineWidth="3" />
-    <linea color="#37B2F0" x1="380" y1="284" x2="394" y2="278" lineWidth="3" />
-    <linea color="#37B2F0" x1="394" y1="278" x2="408" y2="272" lineWidth="3" />
-    <linea color="#37B2F0" x1="408" y1="272" x2="423" y2="264" lineWidth="3" />
-    <linea color="#37B2F0" x1="423" y1="264" x2="436" y2="256" lineWidth="3" />
-    <linea color="#37B2F0" x1="436" y1="256" x2="452" y2="249" lineWidth="3" />
-    <linea color="#37B2F0" x1="452" y1="249" x2="466" y2="245" lineWidth="3" />
-    <linea color="#37B2F0" x1="466" y1="245" x2="483" y2="239" lineWidth="3" />
-    <linea color="#37B2F0" x1="483" y1="239" x2="495" y2="237" lineWidth="3" />
-    <linea color="#37B2F0" x1="495" y1="237" x2="509" y2="236" lineWidth="3" />
-    <linea color="#37B2F0" x1="509" y1="236" x2="524" y2="236" lineWidth="3" />
-    <linea color="#37B2F0" x1="524" y1="236" x2="539" y2="236" lineWidth="3" />
-    <linea color="#37B2F0" x1="539" y1="236" x2="555" y2="242" lineWidth="3" />
-    <linea color="#37B2F0" x1="555" y1="242" x2="575" y2="248" lineWidth="3" />
-    <linea color="#37B2F0" x1="575" y1="248" x2="594" y2="257" lineWidth="3" />
-    <linea color="#37B2F0" x1="594" y1="257" x2="610" y2="265" lineWidth="3" />
-    <linea color="#37B2F0" x1="610" y1="265" x2="623" y2="273" lineWidth="3" />
-    <linea color="#37B2F0" x1="623" y1="273" x2="634" y2="283" lineWidth="3" />
-    <linea color="#37B2F0" x1="634" y1="283" x2="642" y2="292" lineWidth="3" />
-    <linea color="#37B2F0" x1="642" y1="292" x2="648" y2="303" lineWidth="3" />
-    <linea color="#37B2F0" x1="648" y1="303" x2="649" y2="308" lineWidth="3" />
-    <linea color="#37B2F0" x1="649" y1="308" x2="649" y2="310" lineWidth="3" />
+  <archivo numero="2" usuario="rperedo">
+    <linea color="#37B2F0" x1="313" y1="222" x2="313" y2="238" lineWidth="3" />
+    <linea color="#37B2F0" x1="313" y1="238" x2="322" y2="283" lineWidth="3" />
+    <linea color="#37B2F0" x1="322" y1="283" x2="343" y2="330" lineWidth="3" />
+    <linea color="#37B2F0" x1="343" y1="330" x2="367" y2="370" lineWidth="3" />
+    <linea color="#37B2F0" x1="367" y1="370" x2="388" y2="397" lineWidth="3" />
+    <linea color="#37B2F0" x1="388" y1="397" x2="406" y2="410" lineWidth="3" />
+    <linea color="#37B2F0" x1="406" y1="410" x2="419" y2="415" lineWidth="3" />
+    <linea color="#37B2F0" x1="419" y1="415" x2="428" y2="415" lineWidth="3" />
+    <linea color="#37B2F0" x1="428" y1="415" x2="446" y2="415" lineWidth="3" />
+    <linea color="#37B2F0" x1="446" y1="415" x2="462" y2="404" lineWidth="3" />
+    <linea color="#37B2F0" x1="462" y1="404" x2="489" y2="384" lineWidth="3" />
+    <linea color="#37B2F0" x1="489" y1="384" x2="503" y2="369" lineWidth="3" />
+    <linea color="#37B2F0" x1="439" y1="251" x2="429" y2="256" lineWidth="3" />
+    <linea color="#37B2F0" x1="429" y1="256" x2="403" y2="270" lineWidth="3" />
+    <linea color="#37B2F0" x1="403" y1="270" x2="364" y2="292" lineWidth="3" />
+    <linea color="#37B2F0" x1="364" y1="292" x2="297" y2="322" lineWidth="3" />
+    <linea color="#37B2F0" x1="297" y1="322" x2="251" y2="346" lineWidth="3" />
+    <linea color="#37B2F0" x1="251" y1="346" x2="214" y2="366" lineWidth="3" />
+    <linea color="#37B2F0" x1="214" y1="366" x2="191" y2="379" lineWidth="3" />
+    <linea color="#37B2F0" x1="191" y1="379" x2="173" y2="389" lineWidth="3" />
+    <linea color="#37B2F0" x1="173" y1="389" x2="162" y2="395" lineWidth="3" />
+    <linea color="#37B2F0" x1="162" y1="395" x2="152" y2="400" lineWidth="3" />
+  </archivo>
+  <archivo numero="3" usuario="rperedo">
+    <linea color="#F7D42A" x1="243" y1="235" x2="246" y2="246" lineWidth="3" />
+    <linea color="#F7D42A" x1="246" y1="246" x2="254" y2="263" lineWidth="3" />
+    <linea color="#F7D42A" x1="254" y1="263" x2="272" y2="286" lineWidth="3" />
+    <linea color="#F7D42A" x1="272" y1="286" x2="282" y2="292" lineWidth="3" />
+    <linea color="#F7D42A" x1="282" y1="292" x2="296" y2="296" lineWidth="3" />
+    <linea color="#F7D42A" x1="296" y1="296" x2="321" y2="301" lineWidth="3" />
+    <linea color="#F7D42A" x1="321" y1="301" x2="352" y2="304" lineWidth="3" />
+    <linea color="#F7D42A" x1="352" y1="304" x2="378" y2="309" lineWidth="3" />
+    <linea color="#F7D42A" x1="378" y1="309" x2="398" y2="309" lineWidth="3" />
+    <linea color="#F7D42A" x1="398" y1="309" x2="418" y2="309" lineWidth="3" />
+    <linea color="#F7D42A" x1="418" y1="309" x2="434" y2="309" lineWidth="3" />
+    <linea color="#F7D42A" x1="434" y1="309" x2="450" y2="303" lineWidth="3" />
+    <linea color="#F7D42A" x1="450" y1="303" x2="482" y2="290" lineWidth="3" />
+    <linea color="#F7D42A" x1="482" y1="290" x2="492" y2="284" lineWidth="3" />
+  </archivo>
+  <archivo numero="9" usuario="rperedo">
+    <linea color="#37B2F0" x1="146" y1="85" x2="168" y2="134" lineWidth="3" />
+    <linea color="#37B2F0" x1="168" y1="134" x2="190" y2="182" lineWidth="3" />
+    <linea color="#37B2F0" x1="190" y1="182" x2="535" y2="245" lineWidth="3" />
+    <linea color="#37B2F0" x1="534" y1="205" x2="518" y2="216" lineWidth="3" />
+    <linea color="#37B2F0" x1="518" y1="216" x2="499" y2="233" lineWidth="3" />
+    <linea color="#37B2F0" x1="499" y1="233" x2="479" y2="250" lineWidth="3" />
+    <linea color="#37B2F0" x1="479" y1="250" x2="460" y2="266" lineWidth="3" />
+    <linea color="#37B2F0" x1="460" y1="266" x2="443" y2="280" lineWidth="3" />
+    <linea color="#37B2F0" x1="443" y1="280" x2="426" y2="291" lineWidth="3" />
+    <linea color="#37B2F0" x1="426" y1="291" x2="407" y2="301" lineWidth="3" />
+    <linea color="#37B2F0" x1="407" y1="301" x2="387" y2="310" lineWidth="3" />
+    <linea color="#37B2F0" x1="387" y1="310" x2="353" y2="316" lineWidth="3" />
+    <linea color="#37B2F0" x1="353" y1="316" x2="331" y2="317" lineWidth="3" />
+    <linea color="#37B2F0" x1="331" y1="317" x2="308" y2="317" lineWidth="3" />
+    <linea color="#37B2F0" x1="308" y1="317" x2="277" y2="317" lineWidth="3" />
+    <linea color="#37B2F0" x1="277" y1="317" x2="247" y2="313" lineWidth="3" />
+    <linea color="#37B2F0" x1="247" y1="313" x2="211" y2="302" lineWidth="3" />
+    <linea color="#37B2F0" x1="211" y1="302" x2="189" y2="290" lineWidth="3" />
+    <linea color="#37B2F0" x1="189" y1="290" x2="172" y2="274" lineWidth="3" />
+    <linea color="#37B2F0" x1="172" y1="274" x2="164" y2="267" lineWidth="3" />
+    <linea color="#37B2F0" x1="343" y1="141" x2="350" y2="154" lineWidth="3" />
+    <linea color="#37B2F0" x1="350" y1="154" x2="366" y2="191" lineWidth="3" />
+    <linea color="#37B2F0" x1="366" y1="191" x2="378" y2="223" lineWidth="3" />
+    <linea color="#37B2F0" x1="378" y1="223" x2="390" y2="255" lineWidth="3" />
+    <linea color="#37B2F0" x1="390" y1="255" x2="402" y2="284" lineWidth="3" />
+    <linea color="#37B2F0" x1="402" y1="284" x2="415" y2="309" lineWidth="3" />
+    <linea color="#37B2F0" x1="415" y1="309" x2="432" y2="339" lineWidth="3" />
+    <linea color="#37B2F0" x1="432" y1="339" x2="455" y2="375" lineWidth="3" />
+    <linea color="#37B2F0" x1="455" y1="375" x2="469" y2="393" lineWidth="3" />
+    <linea color="#37B2F0" x1="469" y1="393" x2="485" y2="404" lineWidth="3" />
+    <linea color="#37B2F0" x1="485" y1="404" x2="503" y2="416" lineWidth="3" />
+    <linea color="#37B2F0" x1="503" y1="416" x2="519" y2="423" lineWidth="3" />
+    <linea color="#37B2F0" x1="519" y1="423" x2="535" y2="427" lineWidth="3" />
+    <linea color="#37B2F0" x1="535" y1="427" x2="544" y2="428" lineWidth="3" />
+    <linea color="#6DD02D" x1="436" y1="165" x2="436" y2="167" lineWidth="3" />
+    <linea color="#6DD02D" x1="436" y1="167" x2="432" y2="185" lineWidth="3" />
+    <linea color="#6DD02D" x1="432" y1="185" x2="427" y2="200" lineWidth="3" />
+    <linea color="#6DD02D" x1="427" y1="200" x2="423" y2="217" lineWidth="3" />
+    <linea color="#6DD02D" x1="423" y1="217" x2="418" y2="231" lineWidth="3" />
+    <linea color="#6DD02D" x1="418" y1="231" x2="415" y2="241" lineWidth="3" />
+    <linea color="#6DD02D" x1="415" y1="241" x2="413" y2="255" lineWidth="3" />
+    <linea color="#6DD02D" x1="413" y1="255" x2="411" y2="269" lineWidth="3" />
+    <linea color="#6DD02D" x1="411" y1="269" x2="407" y2="283" lineWidth="3" />
+    <linea color="#6DD02D" x1="407" y1="283" x2="404" y2="296" lineWidth="3" />
+    <linea color="#6DD02D" x1="404" y1="296" x2="403" y2="304" lineWidth="3" />
+    <linea color="#6DD02D" x1="403" y1="304" x2="400" y2="312" lineWidth="3" />
+    <linea color="#6DD02D" x1="400" y1="312" x2="398" y2="319" lineWidth="3" />
+    <linea color="#6DD02D" x1="398" y1="319" x2="398" y2="328" lineWidth="3" />
+    <linea color="#6DD02D" x1="398" y1="328" x2="397" y2="339" lineWidth="3" />
+    <linea color="#6DD02D" x1="397" y1="339" x2="396" y2="349" lineWidth="3" />
+    <linea color="#6DD02D" x1="396" y1="349" x2="396" y2="351" lineWidth="3" />
+    <linea color="#6DD02D" x1="396" y1="351" x2="396" y2="352" lineWidth="3" />
+  </archivo>
+  <archivo numero="1" usuario="richie">
+    <linea color="#37B2F0" x1="121" y1="113" x2="123" y2="121" lineWidth="3" />
+    <linea color="#37B2F0" x1="123" y1="121" x2="125" y2="136" lineWidth="3" />
+    <linea color="#37B2F0" x1="125" y1="136" x2="127" y2="152" lineWidth="3" />
+    <linea color="#37B2F0" x1="127" y1="152" x2="129" y2="168" lineWidth="3" />
+    <linea color="#37B2F0" x1="129" y1="168" x2="133" y2="186" lineWidth="3" />
+    <linea color="#37B2F0" x1="133" y1="186" x2="136" y2="202" lineWidth="3" />
+    <linea color="#37B2F0" x1="136" y1="202" x2="141" y2="220" lineWidth="3" />
+    <linea color="#37B2F0" x1="141" y1="220" x2="145" y2="240" lineWidth="3" />
+    <linea color="#37B2F0" x1="145" y1="240" x2="148" y2="249" lineWidth="3" />
+    <linea color="#37B2F0" x1="148" y1="249" x2="149" y2="255" lineWidth="3" />
+    <linea color="#37B2F0" x1="149" y1="255" x2="151" y2="259" lineWidth="3" />
+    <linea color="#37B2F0" x1="151" y1="259" x2="151" y2="265" lineWidth="3" />
+    <linea color="#37B2F0" x1="151" y1="265" x2="153" y2="270" lineWidth="3" />
+    <linea color="#37B2F0" x1="153" y1="270" x2="154" y2="274" lineWidth="3" />
+    <linea color="#37B2F0" x1="154" y1="274" x2="154" y2="280" lineWidth="3" />
+    <linea color="#37B2F0" x1="154" y1="280" x2="154" y2="288" lineWidth="3" />
+    <linea color="#37B2F0" x1="154" y1="288" x2="154" y2="294" lineWidth="3" />
+    <linea color="#37B2F0" x1="154" y1="294" x2="154" y2="299" lineWidth="3" />
+    <linea color="#37B2F0" x1="154" y1="299" x2="154" y2="304" lineWidth="3" />
+    <linea color="#37B2F0" x1="154" y1="304" x2="154" y2="310" lineWidth="3" />
+    <linea color="#37B2F0" x1="154" y1="310" x2="154" y2="314" lineWidth="3" />
+    <linea color="#37B2F0" x1="154" y1="314" x2="154" y2="318" lineWidth="3" />
+    <linea color="#37B2F0" x1="154" y1="318" x2="154" y2="320" lineWidth="3" />
+    <linea color="#37B2F0" x1="154" y1="320" x2="154" y2="321" lineWidth="3" />
+    <linea color="#F7D42A" x1="251" y1="111" x2="249" y2="122" lineWidth="3" />
+    <linea color="#F7D42A" x1="249" y1="122" x2="247" y2="137" lineWidth="3" />
+    <linea color="#F7D42A" x1="247" y1="137" x2="245" y2="157" lineWidth="3" />
+    <linea color="#F7D42A" x1="245" y1="157" x2="242" y2="177" lineWidth="3" />
+    <linea color="#F7D42A" x1="242" y1="177" x2="238" y2="195" lineWidth="3" />
+    <linea color="#F7D42A" x1="238" y1="195" x2="236" y2="210" lineWidth="3" />
+    <linea color="#F7D42A" x1="236" y1="210" x2="236" y2="224" lineWidth="3" />
+    <linea color="#F7D42A" x1="236" y1="224" x2="236" y2="243" lineWidth="3" />
+    <linea color="#F7D42A" x1="236" y1="243" x2="236" y2="255" lineWidth="3" />
+    <linea color="#F7D42A" x1="236" y1="255" x2="236" y2="264" lineWidth="3" />
+    <linea color="#F7D42A" x1="236" y1="264" x2="236" y2="274" lineWidth="3" />
+    <linea color="#F7D42A" x1="236" y1="274" x2="236" y2="285" lineWidth="3" />
+    <linea color="#F7D42A" x1="236" y1="285" x2="239" y2="295" lineWidth="3" />
+    <linea color="#F7D42A" x1="239" y1="295" x2="243" y2="308" lineWidth="3" />
+    <linea color="#F7D42A" x1="243" y1="308" x2="248" y2="320" lineWidth="3" />
+    <linea color="#F7D42A" x1="248" y1="320" x2="252" y2="328" lineWidth="3" />
+    <linea color="#F7D42A" x1="252" y1="328" x2="256" y2="332" lineWidth="3" />
+    <linea color="#F7D42A" x1="256" y1="332" x2="262" y2="339" lineWidth="3" />
+    <linea color="#F7D42A" x1="262" y1="339" x2="269" y2="348" lineWidth="3" />
+    <linea color="#F7D42A" x1="269" y1="348" x2="275" y2="355" lineWidth="3" />
+    <linea color="#F7D42A" x1="275" y1="355" x2="282" y2="362" lineWidth="3" />
+    <linea color="#F7D42A" x1="282" y1="362" x2="287" y2="367" lineWidth="3" />
+    <linea color="#F7D42A" x1="287" y1="367" x2="291" y2="368" lineWidth="3" />
+  </archivo>
+  <archivo numero="2" usuario="richie">
+    <linea color="black" x1="403" y1="126" x2="397" y2="127" lineWidth="3" />
+    <linea color="black" x1="397" y1="127" x2="387" y2="136" lineWidth="3" />
+    <linea color="black" x1="387" y1="136" x2="376" y2="145" lineWidth="3" />
+    <linea color="black" x1="376" y1="145" x2="368" y2="152" lineWidth="3" />
+    <linea color="black" x1="368" y1="152" x2="362" y2="157" lineWidth="3" />
+    <linea color="black" x1="362" y1="157" x2="353" y2="164" lineWidth="3" />
+    <linea color="black" x1="353" y1="164" x2="336" y2="177" lineWidth="3" />
+    <linea color="black" x1="336" y1="177" x2="323" y2="183" lineWidth="3" />
+    <linea color="black" x1="323" y1="183" x2="301" y2="190" lineWidth="3" />
+    <linea color="black" x1="301" y1="190" x2="277" y2="198" lineWidth="3" />
+    <linea color="black" x1="277" y1="198" x2="257" y2="204" lineWidth="3" />
+    <linea color="black" x1="257" y1="204" x2="238" y2="209" lineWidth="3" />
+    <linea color="black" x1="238" y1="209" x2="216" y2="216" lineWidth="3" />
+    <linea color="black" x1="216" y1="216" x2="191" y2="222" lineWidth="3" />
+    <linea color="black" x1="191" y1="222" x2="172" y2="229" lineWidth="3" />
+    <linea color="black" x1="172" y1="229" x2="158" y2="233" lineWidth="3" />
+    <linea color="black" x1="158" y1="233" x2="147" y2="235" lineWidth="3" />
+    <linea color="black" x1="147" y1="235" x2="139" y2="235" lineWidth="3" />
+    <linea color="black" x1="139" y1="235" x2="135" y2="236" lineWidth="3" />
+    <linea color="black" x1="135" y1="236" x2="132" y2="237" lineWidth="3" />
+    <linea color="black" x1="132" y1="237" x2="130" y2="237" lineWidth="3" />
+    <linea color="black" x1="130" y1="237" x2="129" y2="237" lineWidth="3" />
+  </archivo>
+  <archivo numero="3" usuario="richie">
+    <linea color="#6DD02D" x1="608" y1="136" x2="601" y2="142" lineWidth="3" />
+    <linea color="#6DD02D" x1="601" y1="142" x2="586" y2="151" lineWidth="3" />
+    <linea color="#6DD02D" x1="586" y1="151" x2="570" y2="163" lineWidth="3" />
+    <linea color="#6DD02D" x1="570" y1="163" x2="553" y2="175" lineWidth="3" />
+    <linea color="#6DD02D" x1="553" y1="175" x2="537" y2="186" lineWidth="3" />
+    <linea color="#6DD02D" x1="537" y1="186" x2="521" y2="197" lineWidth="3" />
+    <linea color="#6DD02D" x1="521" y1="197" x2="505" y2="209" lineWidth="3" />
+    <linea color="#6DD02D" x1="505" y1="209" x2="490" y2="218" lineWidth="3" />
+    <linea color="#6DD02D" x1="490" y1="218" x2="473" y2="227" lineWidth="3" />
+    <linea color="#6DD02D" x1="473" y1="227" x2="448" y2="242" lineWidth="3" />
+    <linea color="#6DD02D" x1="448" y1="242" x2="429" y2="250" lineWidth="3" />
+    <linea color="#6DD02D" x1="429" y1="250" x2="409" y2="259" lineWidth="3" />
+    <linea color="#6DD02D" x1="409" y1="259" x2="385" y2="269" lineWidth="3" />
+    <linea color="#6DD02D" x1="385" y1="269" x2="365" y2="278" lineWidth="3" />
+    <linea color="#6DD02D" x1="365" y1="278" x2="345" y2="284" lineWidth="3" />
+    <linea color="#6DD02D" x1="345" y1="284" x2="330" y2="288" lineWidth="3" />
+    <linea color="#6DD02D" x1="330" y1="288" x2="316" y2="292" lineWidth="3" />
+    <linea color="#6DD02D" x1="316" y1="292" x2="307" y2="295" lineWidth="3" />
+    <linea color="#6DD02D" x1="307" y1="295" x2="299" y2="297" lineWidth="3" />
+    <linea color="#6DD02D" x1="299" y1="297" x2="297" y2="298" lineWidth="3" />
+    <linea color="#6DD02D" x1="297" y1="298" x2="295" y2="298" lineWidth="3" />
+    <linea color="#F04537" x1="698" y1="181" x2="680" y2="196" lineWidth="3" />
+    <linea color="#F04537" x1="680" y1="196" x2="639" y2="233" lineWidth="3" />
+    <linea color="#F04537" x1="639" y1="233" x2="621" y2="247" lineWidth="3" />
+    <linea color="#F04537" x1="621" y1="247" x2="579" y2="280" lineWidth="3" />
+    <linea color="#F04537" x1="579" y1="280" x2="542" y2="311" lineWidth="3" />
+    <linea color="#F04537" x1="542" y1="311" x2="510" y2="338" lineWidth="3" />
+    <linea color="#F04537" x1="510" y1="338" x2="471" y2="364" lineWidth="3" />
+    <linea color="#F04537" x1="471" y1="364" x2="453" y2="375" lineWidth="3" />
+    <linea color="#F04537" x1="453" y1="375" x2="435" y2="383" lineWidth="3" />
+    <linea color="#F04537" x1="435" y1="383" x2="419" y2="389" lineWidth="3" />
+    <linea color="#F04537" x1="419" y1="389" x2="402" y2="395" lineWidth="3" />
+    <linea color="#F04537" x1="402" y1="395" x2="383" y2="398" lineWidth="3" />
+    <linea color="#F04537" x1="383" y1="398" x2="363" y2="400" lineWidth="3" />
+    <linea color="#F04537" x1="363" y1="400" x2="344" y2="401" lineWidth="3" />
+    <linea color="#F04537" x1="344" y1="401" x2="334" y2="401" lineWidth="3" />
   </archivo>
 </archivos>

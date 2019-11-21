@@ -59,7 +59,7 @@ public class guardarCanvas extends HttpServlet {
                 //se elimina el nodo existente en el xml y se sustituye con uno nuevo.
                 Element archivo = new Element("archivo");
                 if (idArchivo.equals("nuevo")) {
-                    archivo.setAttribute(new Attribute("numero", (contarTotalEjercicios(ruta, "total") + 1) + ""));
+                    archivo.setAttribute(new Attribute("numero", (contarTotalEjercicios(ruta, usr) + 1) + ""));
                 } else {
                     //Se recorre el xml buscando al nodo correpondiente, para posteriormente borrarlo.
                     List lista = raiz.getChildren("archivo");
@@ -115,17 +115,15 @@ public class guardarCanvas extends HttpServlet {
             Document documento = builder.build(archivoXML);
             Element raiz = documento.getRootElement();
             List lista = raiz.getChildren("archivo");
-            if (!usr.equals("total")) {
-                for (int i = 0; i < lista.size(); i++) {
-                    Element elemento = (Element) lista.get(i);
-                    String ide = elemento.getAttributeValue("usuario");
-                    if (usr.compareTo(ide) == 0) {
-                        regreso++;
-                    }
+
+            for (int i = 0; i < lista.size(); i++) {
+                Element elemento = (Element) lista.get(i);
+                String ide = elemento.getAttributeValue("usuario");
+                if (usr.compareTo(ide) == 0) {
+                    regreso++;
                 }
-            } else {
-                return lista.size();
             }
+
         } catch (Exception e) {
             regreso = -1;
         }

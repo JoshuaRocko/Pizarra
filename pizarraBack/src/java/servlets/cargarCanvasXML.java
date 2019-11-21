@@ -54,9 +54,11 @@ public class cargarCanvasXML extends HttpServlet {
 
             if (existe) {
                 String json = new Gson().toJson(ejercicios);
+                
                 response.getWriter().print(json);
             }
         } catch (Exception e) {
+            response.getWriter().print(e.getMessage());
         }
     }
 
