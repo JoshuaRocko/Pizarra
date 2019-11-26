@@ -32,8 +32,8 @@ public class crearejercicio extends HttpServlet {
             out.println("<body>");
             out.println("<h1 class=\"titulo\">" + titulo + "</h1>");
             out.println("<canvas id=\"canvas\" width=\"800\" height=\"500\"></canvas>");
-            out.println("<button type=\"button\" onClick=\"window.location.href='http://localhost:3000/main/'\">Back</button>");
-            out.println("<script src='ver.js' ></script>");
+            out.println("<button type=\"button\" onClick=\"window.location.href='../pizarra'\">Back</button>");
+            out.println("<script src='ver.js'></script>");
         } else if (idUsr != null && idArchivo != null) {
             boolean script = false;
             if (!idArchivo.equals("nuevo")) {
@@ -58,7 +58,7 @@ public class crearejercicio extends HttpServlet {
             out.println("<button type=\"button\" id=\"decreaseWidth\" class=\"btn btn2\">-</button>");
             out.println("<button onclick=\"TogetherJS(this); return false;\" class=\"btn btn1\">Start TogetherJS</button>");
             out.println("<button type=\"button\" id=\"save\">Save</button>");
-            out.println("<button type=\"button\" onClick=\"window.location.href='http://localhost:3000/main/'\">Back</button>");
+            out.println("<button type=\"button\" onClick=\"window.location.href='../pizarra'\">Back</button>");
             out.println("<script src=\"https://togetherjs.com/togetherjs-min.js\"></script>");
             if (script) {
                 out.println("<script src=\"modificar.js\"></script>");
