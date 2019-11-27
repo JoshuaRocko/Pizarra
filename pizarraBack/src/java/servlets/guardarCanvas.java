@@ -25,7 +25,7 @@ import org.jdom2.output.XMLOutputter;
 public class guardarCanvas extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String datos = request.getParameter("datos");
         String usr = request.getParameter("usr");
@@ -101,11 +101,11 @@ public class guardarCanvas extends HttpServlet {
         }
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-    }
+//    @Override
+//    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+//            throws ServletException, IOException {
+//
+//    }
 
     public int contarTotalEjercicios(String ruta, String usr) {
         int regreso = 0;
