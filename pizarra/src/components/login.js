@@ -28,7 +28,7 @@ class Login extends Component {
     event.preventDefault();
     if (this.state.usuario && this.state.contra) {
       let url =
-        '/pizarraBack/servletLogin?usr=' +
+        'http://localhost:8080/pizarraBack/servletLogin?usr=' +
         this.state.usuario +
         '&psw=' +
         this.state.contra +

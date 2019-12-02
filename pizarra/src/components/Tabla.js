@@ -9,7 +9,10 @@ class Tabla extends Component {
   }
 
   componentDidMount() {
-    fetch('/pizarraBack/servletTablaArchivos?idUsr=' + this.props.usr)
+    fetch(
+      'http://localhost:8080/pizarraBack/servletTablaArchivos?idUsr=' +
+        this.props.usr
+    )
       .then(res => res.json())
       .then(data => {
         this.setState({ ejercicios: data });
@@ -20,28 +23,36 @@ class Tabla extends Component {
 
   handleBorrarEjercicio(event) {
     event.preventDefault();
-    let ejerc = event.target.name;
-    let url =
-      '/pizarraBack/eliminarEjercicio?idUsr=' +
-      this.props.usr +
-      '&idArchivo=' +
-      ejerc;
-    fetch(url)
-      .then(response => response.text())
-      .then(data => {
-        if (data === 'eliminado') {
-          alert('Se eliminó el ejercicio.');
-          fetch('/pizarraBack/servletTablaArchivos?idUsr=' + this.props.usr)
-            .then(res => res.json())
-            .then(data => {
-              this.setState({ ejercicios: data });
-              console.log(this.state.ejercicios);
-            })
-            .catch(console.log);
-        } else {
-          alert('Houston, we have a problem.');
-        }
-      });
+    let confirmacion = window.confirm(
+      '¿Estás seguro que deseas borrar el ejercicio?'
+    );
+    if (confirmacion === true) {
+      let ejerc = event.target.name;
+      let url =
+        'http://localhost:8080/pizarraBack/eliminarEjercicio?idUsr=' +
+        this.props.usr +
+        '&idArchivo=' +
+        ejerc;
+      fetch(url)
+        .then(response => response.text())
+        .then(data => {
+          if (data === 'eliminado') {
+            alert('Se eliminó el ejercicio.');
+            fetch(
+              'http://localhost:8080/pizarraBack/servletTablaArchivos?idUsr=' +
+                this.props.usr
+            )
+              .then(res => res.json())
+              .then(data => {
+                this.setState({ ejercicios: data });
+                console.log(this.state.ejercicios);
+              })
+              .catch(console.log);
+          } else {
+            alert('Houston, we have a problem.');
+          }
+        });
+    }
   }
 
   render() {
@@ -59,7 +70,7 @@ class Tabla extends Component {
                     name={'Ejercicio' + ejercicio}
                     size='sm'
                     href={
-                      '/pizarraBack/crearejercicio?idUsr=' +
+                      'http://localhost:8080/pizarraBack/crearejercicio?idUsr=' +
                       this.props.usr +
                       '&idArchivo=' +
                       ejercicio +
@@ -73,7 +84,7 @@ class Tabla extends Component {
                     className='boton'
                     size='sm'
                     href={
-                      '/pizarraBack/crearejercicio?idUsr=' +
+                      'http://localhost:8080/pizarraBack/crearejercicio?idUsr=' +
                       this.props.usr +
                       '&idArchivo=' +
                       ejercicio

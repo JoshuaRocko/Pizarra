@@ -47,7 +47,8 @@ function increaseWidth(event) {
 }
 
 function decreaseWidth(event) {
-    if (lineWidth != 1) lineWidth -= 2;
+    if (lineWidth != 1)
+        lineWidth -= 2;
     console.log(lineWidth);
 }
 
@@ -73,15 +74,15 @@ function start_stop_Drawing(event) {
 function handle_mouseMove(event) {
     if (dibuja) {
         drawLine(
-            color,
-            x,
-            y,
-            event.pageX - this.offsetLeft,
-            event.pageY - this.offsetTop,
-            context,
-            lineWidth,
-            true
-        );
+                color,
+                x,
+                y,
+                event.pageX - this.offsetLeft,
+                event.pageY - this.offsetTop,
+                context,
+                lineWidth,
+                true
+                );
         /* Dibujar para los demás usuarios */
         if (TogetherJS.running) {
             TogetherJS.send({
@@ -123,25 +124,25 @@ function drawLine(color, x1, y1, x2, y2, context, lineWidth, save) {
 }
 
 /* Función para dibujar líneas de otros usuarios */
-TogetherJS.hub.on('draw', function(msg) {
+TogetherJS.hub.on('draw', function (msg) {
     if (!msg.sameUrl) {
         return;
     }
     drawLine(
-        msg.color,
-        msg.x1,
-        msg.y1,
-        msg.x2,
-        msg.y2,
-        context,
-        msg.lineWidth,
-        false
-    );
+            msg.color,
+            msg.x1,
+            msg.y1,
+            msg.x2,
+            msg.y2,
+            context,
+            msg.lineWidth,
+            false
+            );
 });
 
 /* Funciones para dibujar el canvas cuando un nuevo
  usuario se une a la sesión */
-TogetherJS.hub.on('togetherjs.hello', function(msg) {
+TogetherJS.hub.on('togetherjs.hello', function (msg) {
     if (!msg.sameUrl) {
         return;
     }
@@ -151,22 +152,22 @@ TogetherJS.hub.on('togetherjs.hello', function(msg) {
     });
 });
 
-TogetherJS.hub.on('drawAllLines', function(msg) {
+TogetherJS.hub.on('drawAllLines', function (msg) {
     if (!msg.sameUrl) {
         return;
     }
     console.log;
     for (i in msg.lines) {
         drawLine(
-            msg.lines[i].color,
-            msg.lines[i].x1,
-            msg.lines[i].y1,
-            msg.lines[i].x2,
-            msg.lines[i].y2,
-            context,
-            msg.lines[i].lineWidth,
-            false
-        );
+                msg.lines[i].color,
+                msg.lines[i].x1,
+                msg.lines[i].y1,
+                msg.lines[i].x2,
+                msg.lines[i].y2,
+                context,
+                msg.lines[i].lineWidth,
+                false
+                );
     }
     lines = msg.lines;
 });
@@ -183,16 +184,17 @@ function saveCanvas() {
     console.log(aber);
     const usr = obtenerValorParametro('idUsr');
     const ide = obtenerValorParametro('idArchivo');
+    const nombre = window.prompt("Teclea el nombre del ejercicio.");
     $.ajax({
         url: 'guardarCanvas',
-        data: { datos: JSON.stringify(lines), usr: usr, idArchivo: ide },
+        data: {datos: JSON.stringify(lines), usr: usr, idArchivo: ide, nombre: nombre},
         type: 'post',
         cache: false,
-        success: function(data) {
+        success: function (data) {
             alert(data);
             window.location.href = '../pizarra';
         },
-        error: function() {
+        error: function () {
             alert('error');
         }
     });

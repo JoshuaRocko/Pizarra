@@ -22,6 +22,7 @@ public class cargarCanvasXML extends HttpServlet {
             throws ServletException, IOException {
         String idArchivo = request.getParameter("idArchivo");
         String idUsr = request.getParameter("idUser");
+        String nombre = request.getParameter("nombre");
         try {
             String ruta = request.getRealPath("/");
             SAXBuilder builder = new SAXBuilder();
@@ -35,7 +36,8 @@ public class cargarCanvasXML extends HttpServlet {
                 Element elemento = (Element) lista.get(i);
                 String ide = elemento.getAttributeValue("numero");
                 String usr = elemento.getAttributeValue("usuario");
-                if (idArchivo.compareTo(ide) == 0 && usr.compareTo(idUsr) == 0) {
+                String name = elemento.getAttributeValue("nombre");
+                if (idArchivo.compareTo(ide) == 0 && usr.compareTo(idUsr) == 0 && name.compareTo(nombre) == 0) {
                     existe = true;
                     List listaLineas = elemento.getChildren("linea");
                     for (int j = 0; j < listaLineas.size(); j++) {
