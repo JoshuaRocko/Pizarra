@@ -11,14 +11,14 @@ function drawLine(color, x1, y1, x2, y2, context, lineWidth) {
 function dibuja(lineas) {
     for (i in lineas) {
         drawLine(
-                lineas[i].color,
-                lineas[i].x1,
-                lineas[i].y1,
-                lineas[i].x2,
-                lineas[i].y2,
-                context,
-                lineas[i].lineWidth
-                );
+            lineas[i].color,
+            lineas[i].x1,
+            lineas[i].y1,
+            lineas[i].x2,
+            lineas[i].y2,
+            context,
+            lineas[i].lineWidth
+        );
     }
 }
 
@@ -28,13 +28,17 @@ function dibujaCanvas() {
     const nombre= obtenerValorParametro('nombre');
     $.ajax({
         url: 'cargarCanvasXML',
+<<<<<<< HEAD
         data: {idUser: idUser, idArchivo: idArchivo, nombre: nombre},
+=======
+        data: { idUser: idUser, idArchivo: idArchivo },
+>>>>>>> 0b0c24dce633be99e7df77ee71594af2b3174b01
         type: 'get',
         cache: false,
-        success: function (data) {
+        success: function(data) {
             dibuja(JSON.parse(data));
         },
-        error: function () {
+        error: function() {
             alert('error');
         }
     });
