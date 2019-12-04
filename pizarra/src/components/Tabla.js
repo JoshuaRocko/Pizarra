@@ -4,7 +4,6 @@ import { Table, ButtonGroup, Button } from 'react-bootstrap';
 class Tabla extends Component {
   constructor(props) {
     super(props);
-<<<<<<< HEAD
     this.state = { error: null, isLoaded: false, ejercicios: [], ejercicioBorrar: '' };
     this.handleBorrarEjercicio = this.handleBorrarEjercicio.bind(this);
     this.handleCopiarEjercicio = this.handleCopiarEjercicio.bind(this);
@@ -108,61 +107,12 @@ class Tabla extends Component {
         return (
           <tr>
             <td>Ejercicio {ejercicio.nombre}</td>
-=======
-    this.state = { ejercicios: [], ejercicioBorrar: '' };
-    this.handleBorrarEjercicio = this.handleBorrarEjercicio.bind(this);
-  }
-
-  componentDidMount() {
-    fetch('/pizarraBack/servletTablaArchivos?idUsr=' + this.props.usr)
-      .then(res => res.json())
-      .then(data => {
-        this.setState({ ejercicios: data });
-        console.log(this.state.ejercicios);
-      })
-      .catch(console.log);
-  }
-
-  handleBorrarEjercicio(event) {
-    event.preventDefault();
-    let ejerc = event.target.name;
-    let url =
-      '/pizarraBack/eliminarEjercicio?idUsr=' +
-      this.props.usr +
-      '&idArchivo=' +
-      ejerc;
-    fetch(url)
-      .then(response => response.text())
-      .then(data => {
-        if (data === 'eliminado') {
-          alert('Se eliminó el ejercicio.');
-          fetch('/pizarraBack/servletTablaArchivos?idUsr=' + this.props.usr)
-            .then(res => res.json())
-            .then(data => {
-              this.setState({ ejercicios: data });
-              console.log(this.state.ejercicios);
-            })
-            .catch(console.log);
-        } else {
-          alert('Houston, we have a problem.');
-        }
-      });
-  }
-
-  render() {
-    if (this.state.ejercicios.length > 0) {
-      const listar = this.state.ejercicios.map(ejercicio => {
-        return (
-          <tr>
-            <td>Ejercicio {ejercicio}</td>
->>>>>>> 0b0c24dce633be99e7df77ee71594af2b3174b01
             <td>
               <div>
                 <ButtonGroup aria-label='Acciones'>
                   <Button
                     variant='outline-info'
                     className='boton'
-<<<<<<< HEAD
                     name={'Ejercicio' + ejercicio.nombre}
                     size='sm'
                     href={
@@ -170,15 +120,6 @@ class Tabla extends Component {
                       this.props.usr +
                       '&idArchivo=' +
                       ejercicio.numero + '&nombre=' + ejercicio.nombre +
-=======
-                    name={'Ejercicio' + ejercicio}
-                    size='sm'
-                    href={
-                      '/pizarraBack/crearejercicio?idUsr=' +
-                      this.props.usr +
-                      '&idArchivo=' +
-                      ejercicio +
->>>>>>> 0b0c24dce633be99e7df77ee71594af2b3174b01
                       '&ver=1'
                     }
                   >
@@ -189,23 +130,15 @@ class Tabla extends Component {
                     className='boton'
                     size='sm'
                     href={
-<<<<<<< HEAD
                       'http://localhost:8080/pizarraBack/crearejercicio?idUsr=' +
                       this.props.usr +
                       '&idArchivo=' +
                       ejercicio.numero + '&nombre=' + ejercicio.nombre
-=======
-                      '/pizarraBack/crearejercicio?idUsr=' +
-                      this.props.usr +
-                      '&idArchivo=' +
-                      ejercicio
->>>>>>> 0b0c24dce633be99e7df77ee71594af2b3174b01
                     }
                   >
                     Modificar ejercicio
                   </Button>
                   <Button
-<<<<<<< HEAD
                     variant='outline-danger'
                     className='boton'
                     size='sm'
@@ -220,15 +153,6 @@ class Tabla extends Component {
                     onClick={() => this.handleCopiarEjercicio(ejercicio.numero, ejercicio.nombre)}
                   >
                     Copiar ejercicio
-=======
-                    variant='outline-dark'
-                    className='boton'
-                    size='sm'
-                    name={ejercicio}
-                    onClick={this.handleBorrarEjercicio}
-                  >
-                    Eliminar ejercicio
->>>>>>> 0b0c24dce633be99e7df77ee71594af2b3174b01
                   </Button>
                 </ButtonGroup>
               </div>
@@ -247,11 +171,6 @@ class Tabla extends Component {
           <tbody>{listar}</tbody>
         </Table>
       );
-<<<<<<< HEAD
-=======
-    } else {
-      return <p className='text-center'>Cargando...</p>;
->>>>>>> 0b0c24dce633be99e7df77ee71594af2b3174b01
     }
   }
 }

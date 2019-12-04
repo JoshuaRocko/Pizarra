@@ -101,20 +101,11 @@ public class guardarCanvas extends HttpServlet {
         }
     }
 
-<<<<<<< HEAD
     /*@Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
     }*/
-=======
-//    @Override
-//    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-//            throws ServletException, IOException {
-//
-//    }
-
->>>>>>> 0b0c24dce633be99e7df77ee71594af2b3174b01
     public int contarTotalEjercicios(String ruta, String usr) {
         int regreso = 0;
         try {

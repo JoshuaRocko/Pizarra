@@ -183,25 +183,15 @@ function saveCanvas() {
     console.log(aber);
     const usr = obtenerValorParametro('idUsr');
     const ide = obtenerValorParametro('idArchivo');
-<<<<<<< HEAD
     const nombre = window.prompt("teclea el nombre");
     $.ajax({
         url: 'guardarCanvas',
         data: {datos: JSON.stringify(lines), usr: usr, idArchivo: ide, nombre: nombre},
-=======
-    $.ajax({
-        url: 'guardarCanvas',
-        data: { datos: JSON.stringify(lines), usr: usr, idArchivo: ide },
->>>>>>> 0b0c24dce633be99e7df77ee71594af2b3174b01
         type: 'post',
         cache: false,
         success: function(data) {
             alert(data);
-<<<<<<< HEAD
             window.location.href = "http://localhost:3000/main/";
-=======
-            window.location.href = '../pizarra';
->>>>>>> 0b0c24dce633be99e7df77ee71594af2b3174b01
         },
         error: function() {
             alert('error');

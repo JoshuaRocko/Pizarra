@@ -181,18 +181,11 @@ function saveCanvas() {
     let aber = JSON.stringify(lines);
     console.log(aber);
     const usr = obtenerValorParametro('idUsr');
-<<<<<<< HEAD
         const ide = obtenerValorParametro('idArchivo');
         const nombre = obtenerValorParametro('nombre');
     $.ajax({
         url: 'guardarCanvas',
         data: {datos: JSON.stringify(lines), usr: usr, idArchivo: ide, nombre: nombre},
-=======
-    const ide = obtenerValorParametro('idArchivo');
-    $.ajax({
-        url: 'guardarCanvas',
-        data: { datos: JSON.stringify(lines), usr: usr, idArchivo: ide },
->>>>>>> 0b0c24dce633be99e7df77ee71594af2b3174b01
         type: 'post',
         cache: false,
         success: function(data) {
@@ -239,11 +232,7 @@ function dibujaCanvas() {
     const nombre= obtenerValorParametro('nombre');
     $.ajax({
         url: 'cargarCanvasXML',
-<<<<<<< HEAD
         data: {idUser: idUser, idArchivo: idArchivo, nombre: nombre},
-=======
-        data: { idUser: idUser, idArchivo: idArchivo },
->>>>>>> 0b0c24dce633be99e7df77ee71594af2b3174b01
         type: 'get',
         cache: false,
         success: function(data) {
