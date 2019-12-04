@@ -180,14 +180,16 @@ saveBtn.addEventListener('click', saveCanvas);
 /* Funcion para convertir en JSON  */
 function saveCanvas() {
     const usr = obtenerValorParametro('idUsr');
-        const ide = obtenerValorParametro('idArchivo');
+    const ide = obtenerValorParametro('idArchivo');
+    const nombre = window.prompt("teclea el nombre");
     $.ajax({
         url: 'guardarCanvas',
-        data: {datos: JSON.stringify(lines), usr: usr, idArchivo: ide},
-        type: 'get',
+        data: {datos: JSON.stringify(lines), usr: usr, idArchivo: ide, nombre: nombre},
+        type: 'post',
         cache: false,
         success: function (data) {
             alert(data);
+            window.location.href = "http://localhost:3000/main/";
         },
         error: function () {
             alert('error');

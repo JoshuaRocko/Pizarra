@@ -181,13 +181,15 @@ saveBtn.addEventListener('click', saveCanvas);
 function saveCanvas() {
     const usr = obtenerValorParametro('idUsr');
         const ide = obtenerValorParametro('idArchivo');
+        const nombre = obtenerValorParametro('nombre');
     $.ajax({
         url: 'guardarCanvas',
-        data: {datos: JSON.stringify(lines), usr: usr, idArchivo: ide},
-        type: 'get',
+        data: {datos: JSON.stringify(lines), usr: usr, idArchivo: ide, nombre: nombre},
+        type: 'post',
         cache: false,
         success: function (data) {
             alert(data);
+            window.location.href = "http://localhost:3000/main/";
         },
         error: function () {
             alert('error');
@@ -226,9 +228,10 @@ function dibujar(lineas) {
 function dibujaCanvas() {
     const idUser = obtenerValorParametro('idUsr');
     const idArchivo = obtenerValorParametro('idArchivo');
+    const nombre= obtenerValorParametro('nombre');
     $.ajax({
         url: 'cargarCanvasXML',
-        data: {idUser: idUser, idArchivo: idArchivo},
+        data: {idUser: idUser, idArchivo: idArchivo, nombre: nombre},
         type: 'get',
         cache: false,
         success: function (data) {

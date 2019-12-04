@@ -24,6 +24,7 @@ public class eliminarEjercicio extends HttpServlet {
         response.addHeader("Access-Control-Allow-Origin", "http://localhost:3000");
         String usr = request.getParameter("idUsr");
         String idArchivo = request.getParameter("idArchivo");
+        String nombre = request.getParameter("nombre");
         boolean existe = false;
 
         try {
@@ -41,7 +42,8 @@ public class eliminarEjercicio extends HttpServlet {
                 Element elemento = (Element) ite.next();
                 String ide = elemento.getAttributeValue("usuario");
                 String num = elemento.getAttributeValue("numero");
-                if (usr.compareTo(ide) == 0 && num.compareTo(idArchivo) == 0) {
+                String nom = elemento.getAttributeValue("nombre");
+                if (usr.compareTo(ide) == 0 && num.compareTo(idArchivo) == 0 && nom.compareTo(nombre) == 0) {
                     ite.remove();
                     existe = true;
                     break;

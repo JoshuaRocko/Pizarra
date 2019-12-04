@@ -25,12 +25,12 @@ import org.jdom2.output.XMLOutputter;
 public class guardarCanvas extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String datos = request.getParameter("datos");
         String usr = request.getParameter("usr");
         String idArchivo = request.getParameter("idArchivo");
-
+        String nombre = request.getParameter("nombre");
         if (datos != null) {
             try {
                 //Recibimos los datos Json y lo convertimos a arreglo de objetos java.
@@ -59,7 +59,7 @@ public class guardarCanvas extends HttpServlet {
                 //se elimina el nodo existente en el xml y se sustituye con uno nuevo.
                 Element archivo = new Element("archivo");
                 if (idArchivo.equals("nuevo")) {
-                    archivo.setAttribute(new Attribute("numero", (contarTotalEjercicios(ruta, usr) + 1) + ""));
+                    archivo.setAttribute(new Attribute("numero", (contarTotalEjercicios(ruta, usr)) + ""));
                 } else {
                     //Se recorre el xml buscando al nodo correpondiente, para posteriormente borrarlo.
                     List lista = raiz.getChildren("archivo");
@@ -74,7 +74,7 @@ public class guardarCanvas extends HttpServlet {
                     }
                     archivo.setAttribute(new Attribute("numero", idArchivo));
                 }
-
+                archivo.setAttribute(new Attribute("nombre", nombre));
                 archivo.setAttribute(new Attribute("usuario", usr));
                 for (lineaCanvas linea : arrayDeJson) {
                     Element line = new Element("linea");
@@ -101,12 +101,11 @@ public class guardarCanvas extends HttpServlet {
         }
     }
 
-    @Override
+    /*@Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-    }
-
+    }*/
     public int contarTotalEjercicios(String ruta, String usr) {
         int regreso = 0;
         try {
@@ -120,7 +119,9 @@ public class guardarCanvas extends HttpServlet {
                 Element elemento = (Element) lista.get(i);
                 String ide = elemento.getAttributeValue("usuario");
                 if (usr.compareTo(ide) == 0) {
-                    regreso++;
+                    if (regreso < Integer.parseInt(elemento.getAttributeValue("numero"))) {
+                        regreso = Integer.parseInt(elemento.getAttributeValue("numero")) + 1;
+                    }
                 }
             }
 

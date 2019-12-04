@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import ldn.ejercicio;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
@@ -25,7 +26,7 @@ public class servletTablaArchivos extends HttpServlet {
         
         if (request.getParameter("idUsr") != null) {
             String idUsr = request.getParameter("idUsr");
-            ArrayList<String> ejercicios = new ArrayList<>();
+            ArrayList<ejercicio> ejercicios = new ArrayList<>();
             try {
                 SAXBuilder builder = new SAXBuilder();
                 String ruta = request.getRealPath("/");
@@ -37,7 +38,7 @@ public class servletTablaArchivos extends HttpServlet {
                     Element elemento = (Element) lista.get(i);
                     String ide = elemento.getAttributeValue("usuario");
                     if (idUsr.compareTo(ide) == 0) {
-                        ejercicios.add(elemento.getAttributeValue("numero"));
+                        ejercicios.add(new ejercicio(elemento.getAttributeValue("nombre"), elemento.getAttributeValue("numero")));
                     }
                 }
                 if (!ejercicios.isEmpty()) {

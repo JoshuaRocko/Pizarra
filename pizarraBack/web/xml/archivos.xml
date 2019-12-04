@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archivos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="archivos.xsd">
-  <archivo numero="1" usuario="rperedo" />
-  <archivo numero="3" usuario="rperedo" />
-  <archivo numero="4" usuario="rperedo" />
-  <archivo numero="6" usuario="joshua" />
-  <archivo numero="7" usuario="joshua" />
-  <archivo numero="8" usuario="grandioso" />
-  <archivo numero="9" usuario="grandioso" />
-  <archivo numero="10" usuario="rperedo">
+  <archivo numero="10" nombre="ejercicio" usuario="rperedo">
     <linea color="#37B2F0" x1="234" y1="176" x2="268" y2="236" lineWidth="3" />
     <linea color="#37B2F0" x1="268" y1="236" x2="288" y2="269" lineWidth="3" />
     <linea color="#37B2F0" x1="288" y1="269" x2="466" y2="346" lineWidth="3" />
   </archivo>
-  <archivo numero="11" usuario="richie">
+  <archivo numero="11" nombre="prueba" usuario="richie">
     <linea color="#37B2F0" x1="130" y1="170" x2="132" y2="178" lineWidth="3" />
     <linea color="#37B2F0" x1="132" y1="178" x2="141" y2="205" lineWidth="3" />
     <linea color="#37B2F0" x1="141" y1="205" x2="147" y2="219" lineWidth="3" />

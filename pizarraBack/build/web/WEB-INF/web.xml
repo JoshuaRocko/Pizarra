@@ -28,6 +28,10 @@
         <servlet-name>eliminarEjercicio</servlet-name>
         <servlet-class>servlets.eliminarEjercicio</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>copiarEjercicio</servlet-name>
+        <servlet-class>servlets.copiarEjercicio</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>servletLogin</servlet-name>
         <url-pattern>/servletLogin</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>eliminarEjercicio</servlet-name>
         <url-pattern>/eliminarEjercicio</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>copiarEjercicio</servlet-name>
+        <url-pattern>/copiarEjercicio</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

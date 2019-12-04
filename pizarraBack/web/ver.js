@@ -25,9 +25,10 @@ function dibuja(lineas) {
 function dibujaCanvas() {
     const idUser = obtenerValorParametro('idUsr');
     const idArchivo = obtenerValorParametro('idArchivo');
+    const nombre= obtenerValorParametro('nombre');
     $.ajax({
         url: 'cargarCanvasXML',
-        data: {idUser: idUser, idArchivo: idArchivo},
+        data: {idUser: idUser, idArchivo: idArchivo, nombre: nombre},
         type: 'get',
         cache: false,
         success: function (data) {

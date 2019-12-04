@@ -16,6 +16,7 @@ public class crearejercicio extends HttpServlet {
         PrintWriter out = response.getWriter();
         String idUsr = request.getParameter("idUsr");
         String idArchivo = request.getParameter("idArchivo");
+        String nombre = request.getParameter("nombre");
         boolean ver = request.getParameter("ver") != null ? request.getParameter("ver").equals("1") : false;
 
         String titulo = "";
