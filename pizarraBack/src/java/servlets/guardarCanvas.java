@@ -30,7 +30,6 @@ public class guardarCanvas extends HttpServlet {
         String datos = request.getParameter("datos");
         String usr = request.getParameter("usr");
         String idArchivo = request.getParameter("idArchivo");
-        String nombre = request.getParameter("nombre");
 
         if (datos != null) {
             try {
@@ -76,7 +75,6 @@ public class guardarCanvas extends HttpServlet {
                     archivo.setAttribute(new Attribute("numero", idArchivo));
                 }
 
-                archivo.setAttribute(new Attribute("nombre", nombre));
                 archivo.setAttribute(new Attribute("usuario", usr));
                 for (lineaCanvas linea : arrayDeJson) {
                     Element line = new Element("linea");

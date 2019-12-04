@@ -11,30 +11,29 @@ function drawLine(color, x1, y1, x2, y2, context, lineWidth) {
 function dibuja(lineas) {
     for (i in lineas) {
         drawLine(
-                lineas[i].color,
-                lineas[i].x1,
-                lineas[i].y1,
-                lineas[i].x2,
-                lineas[i].y2,
-                context,
-                lineas[i].lineWidth
-                );
+            lineas[i].color,
+            lineas[i].x1,
+            lineas[i].y1,
+            lineas[i].x2,
+            lineas[i].y2,
+            context,
+            lineas[i].lineWidth
+        );
     }
 }
 
 function dibujaCanvas() {
     const idUser = obtenerValorParametro('idUsr');
     const idArchivo = obtenerValorParametro('idArchivo');
-    const nombre = obtenerValorParametro('nombre');
     $.ajax({
         url: 'cargarCanvasXML',
-        data: {idUser: idUser, idArchivo: idArchivo, nombre: nombre},
+        data: { idUser: idUser, idArchivo: idArchivo },
         type: 'get',
         cache: false,
-        success: function (data) {
+        success: function(data) {
             dibuja(JSON.parse(data));
         },
-        error: function () {
+        error: function() {
             alert('error');
         }
     });
