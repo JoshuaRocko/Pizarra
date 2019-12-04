@@ -11,7 +11,7 @@ class Index extends Component {
     return (
       <div>
         <Switch>
-          <Route exact path='/pizarra/' component={Login} />
+          <Route exact path='/' component={Login} />
           <Route exact strict path='/main/' component={Principal} />
           <Route path='*' component={() => '404 Not Found'} />
         </Switch>
