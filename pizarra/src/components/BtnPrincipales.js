@@ -17,13 +17,13 @@ class BtnPrincipales extends Component {
 
     handleCrearEjercicio = e => {
         window.location.href =
-            '/pizarraBack/crearejercicio?idUsr=' +
+            'http://localhost:8080/pizarraBack/crearejercicio?idUsr=' +
             this.props.usr + "&idArchivo=nuevo";
     };
 
     render() {
         if (this.state.redirect) {
-            return (<Redirect to={'/pizarra/'} />)
+            return (<Redirect to={'/'} />)
         }
 
         return (
