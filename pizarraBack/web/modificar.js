@@ -136,7 +136,7 @@ TogetherJS.hub.on('draw', function (msg) {
             msg.y2,
             context,
             msg.lineWidth,
-            false
+            true
             );
 });
 
@@ -158,14 +158,14 @@ TogetherJS.hub.on('drawAllLines', function (msg) {
     }
     for (i in msg.lines) {
         drawLine(
-                msg.lines[i][0],
-                msg.lines[i][1],
-                msg.lines[i][2],
-                msg.lines[i][3],
-                msg.lines[i][4],
-                context,
-                msg.lines[i][5],
-                false
+            msg.lines[i].color,
+            msg.lines[i].x1,
+            msg.lines[i].y1,
+            msg.lines[i].x2,
+            msg.lines[i].y2,
+            context,
+            msg.lines[i].lineWidth,
+            false
                 );
     }
     lines = msg.lines;
