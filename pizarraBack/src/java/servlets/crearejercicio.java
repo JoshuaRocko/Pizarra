@@ -57,9 +57,18 @@ public class crearejercicio extends HttpServlet {
             out.println("<button type=\"button\" id=\"white\" class=\"btn btn6\">Erase</button>");
             out.println("<button type=\"button\" id=\"increaseWidth\" class=\"btn btn5\">+</button>");
             out.println("<button type=\"button\" id=\"decreaseWidth\" class=\"btn btn2\">-</button>");
+            out.println("<br />");
+            out.println("Color: <input type=\"color\" id=\"inputColor\" />");
+            out.println("Tmaño: <input type=\"number\" id=\"inputTam\" min=\"0\" />");
+            out.println("<button id=\"DibujaCir\">Dibujar circulo</button>");
+            out.println("<button id=\"DibujaRec\">Dibujar cuadrado</button>");
+            out.println("<button id=\"DibujaTrian\">Dibujar triangulo</button>");
+            out.println("<button id=\"DibujaEstr\">Dibujar Estrella</button>");
+            out.println("<button id=\"clear\">Limpiar Lienzo</button>");
             out.println("<button onclick=\"TogetherJS(this); return false;\" class=\"btn btn1\">Start TogetherJS</button>");
             out.println("<button type=\"button\" id=\"save\">Save</button>");
             out.println("<button type=\"button\" onClick=\"window.location.href='http://localhost:3000/main/'\">Back</button>");
+            out.println("");
             out.println("<script src=\"https://togetherjs.com/togetherjs-min.js\"></script>");
             if (script) {
                 out.println("<script src=\"modificar.js\"></script>");
