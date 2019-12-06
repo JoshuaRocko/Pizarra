@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import ldn.figuraCanvas;
 import ldn.lineaCanvas;
 import org.jdom2.Attribute;
 import org.jdom2.Document;
@@ -40,6 +41,7 @@ public class copiarEjercicio extends HttpServlet {
             Element raiz = documento.getRootElement();
             fis.close();
             ArrayList<lineaCanvas> lineas = new ArrayList<>();
+            ArrayList<figuraCanvas> figuras = new ArrayList<>();
             List lista = raiz.getChildren("archivo");
             Iterator ite = lista.iterator();
             while (ite.hasNext()) {
@@ -61,6 +63,17 @@ public class copiarEjercicio extends HttpServlet {
                         int lineWidth = Integer.parseInt(elementoL.getAttributeValue("lineWidth"));
                         lineas.add(new lineaCanvas(color, x1, y1, x2, y2, lineWidth));
                     }
+                    List listaFiguras = elemento.getChildren("figura");
+                    iterador = listaFiguras.iterator();
+                    while (iterador.hasNext()) {
+                        Element figura = (Element) iterador.next();
+                        String color = figura.getAttributeValue("color");
+                        String x = figura.getAttributeValue("x");
+                        String y = figura.getAttributeValue("y");
+                        String tamanio = figura.getAttributeValue("tamanio");
+                        String tipo = figura.getAttributeValue("tipo");
+                        figuras.add(new figuraCanvas(color, x, y, tamanio, tipo));
+                    }
                     break;
                 }
             }
@@ -70,15 +83,28 @@ public class copiarEjercicio extends HttpServlet {
                     archivo.setAttribute(new Attribute("numero", (contarTotalEjercicios(ruta, usr) + 1) + ""));
                     archivo.setAttribute(new Attribute("nombre", nuevoNombre));
                     archivo.setAttribute(new Attribute("usuario", usr));
-                    for (lineaCanvas linea : lineas) {
-                        Element line = new Element("linea");
-                        line.setAttribute(new Attribute("color", linea.getColor()));
-                        line.setAttribute(new Attribute("x1", linea.getX1() + ""));
-                        line.setAttribute(new Attribute("y1", linea.getY1() + ""));
-                        line.setAttribute(new Attribute("x2", linea.getX2() + ""));
-                        line.setAttribute(new Attribute("y2", linea.getY2() + ""));
-                        line.setAttribute(new Attribute("lineWidth", linea.getLineWidth() + ""));
-                        archivo.addContent(line);
+                    if (!lineas.isEmpty()) {
+                        for (lineaCanvas linea : lineas) {
+                            Element line = new Element("linea");
+                            line.setAttribute(new Attribute("color", linea.getColor()));
+                            line.setAttribute(new Attribute("x1", linea.getX1() + ""));
+                            line.setAttribute(new Attribute("y1", linea.getY1() + ""));
+                            line.setAttribute(new Attribute("x2", linea.getX2() + ""));
+                            line.setAttribute(new Attribute("y2", linea.getY2() + ""));
+                            line.setAttribute(new Attribute("lineWidth", linea.getLineWidth() + ""));
+                            archivo.addContent(line);
+                        }
+                    }
+                    if (!figuras.isEmpty()) {
+                        for (figuraCanvas figura : figuras) {
+                            Element fig = new Element("figura");
+                            fig.setAttribute(new Attribute("color", figura.getColor()));
+                            fig.setAttribute(new Attribute("x", figura.getX()));
+                            fig.setAttribute(new Attribute("y", figura.getY()));
+                            fig.setAttribute(new Attribute("tamanio", figura.getTamanio()));
+                            fig.setAttribute(new Attribute("tipo", figura.getTipo()));
+                            archivo.addContent(fig);
+                        }
                     }
                     raiz.addContent(archivo);
                     documento.setContent(raiz);

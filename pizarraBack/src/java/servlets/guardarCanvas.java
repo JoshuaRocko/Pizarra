@@ -14,6 +14,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import ldn.figuraCanvas;
 import ldn.lineaCanvas;
 import org.jdom2.Attribute;
 import org.jdom2.Document;
@@ -28,16 +29,21 @@ public class guardarCanvas extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String datos = request.getParameter("datos");
+        String figuras = request.getParameter("figuras");
         String usr = request.getParameter("usr");
         String idArchivo = request.getParameter("idArchivo");
         String nombre = request.getParameter("nombre");
-        if (datos != null) {
+        if (datos != null || figuras != null) {
             try {
                 //Recibimos los datos Json y lo convertimos a arreglo de objetos java.
                 Gson gson = new Gson();
                 Type listType = new TypeToken<ArrayList<lineaCanvas>>() {
                 }.getType();
                 ArrayList<lineaCanvas> arrayDeJson = gson.fromJson(datos, listType);
+
+                listType = new TypeToken<ArrayList<figuraCanvas>>() {
+                }.getType();
+                ArrayList<figuraCanvas> arrayFiguras = gson.fromJson(figuras, listType);
 
                 //Procedemos a guardar los datos en el documento xml.
                 String ruta = request.getRealPath("/");
@@ -76,17 +82,29 @@ public class guardarCanvas extends HttpServlet {
                 }
                 archivo.setAttribute(new Attribute("nombre", nombre));
                 archivo.setAttribute(new Attribute("usuario", usr));
-                for (lineaCanvas linea : arrayDeJson) {
-                    Element line = new Element("linea");
-                    line.setAttribute(new Attribute("color", linea.getColor()));
-                    line.setAttribute(new Attribute("x1", linea.getX1() + ""));
-                    line.setAttribute(new Attribute("y1", linea.getY1() + ""));
-                    line.setAttribute(new Attribute("x2", linea.getX2() + ""));
-                    line.setAttribute(new Attribute("y2", linea.getY2() + ""));
-                    line.setAttribute(new Attribute("lineWidth", linea.getLineWidth() + ""));
-                    archivo.addContent(line);
+                if (!arrayDeJson.isEmpty()) {
+                    for (lineaCanvas linea : arrayDeJson) {
+                        Element line = new Element("linea");
+                        line.setAttribute(new Attribute("color", linea.getColor()));
+                        line.setAttribute(new Attribute("x1", linea.getX1() + ""));
+                        line.setAttribute(new Attribute("y1", linea.getY1() + ""));
+                        line.setAttribute(new Attribute("x2", linea.getX2() + ""));
+                        line.setAttribute(new Attribute("y2", linea.getY2() + ""));
+                        line.setAttribute(new Attribute("lineWidth", linea.getLineWidth() + ""));
+                        archivo.addContent(line);
+                    }
                 }
-
+                if (!arrayFiguras.isEmpty()) {
+                    for (figuraCanvas figura : arrayFiguras) {
+                        Element fig = new Element("figura");
+                        fig.setAttribute(new Attribute("color", figura.getColor()));
+                        fig.setAttribute(new Attribute("x", figura.getX()));
+                        fig.setAttribute(new Attribute("y", figura.getY()));
+                        fig.setAttribute(new Attribute("tamanio", figura.getTamanio()));
+                        fig.setAttribute(new Attribute("tipo", figura.getTipo()));
+                        archivo.addContent(fig);
+                    }
+                }
                 raiz.addContent(archivo);
                 documento.setContent(raiz);
                 XMLOutputter xmlOutput = new XMLOutputter();

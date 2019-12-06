@@ -10,6 +10,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import ldn.archivosCanvas;
+import ldn.figuraCanvas;
 import ldn.lineaCanvas;
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -30,6 +32,7 @@ public class cargarCanvasXML extends HttpServlet {
             Document documento = builder.build(archivoXML);
             Element raiz = documento.getRootElement();
             ArrayList<lineaCanvas> ejercicios = new ArrayList<>();
+            ArrayList<figuraCanvas> figurasC = new ArrayList<>();
             List lista = raiz.getChildren("archivo");
             boolean existe = false;
             for (int i = 0; i < lista.size(); i++) {
@@ -50,13 +53,28 @@ public class cargarCanvasXML extends HttpServlet {
                         int lineWidth = Integer.parseInt(line.getAttributeValue("lineWidth"));
                         ejercicios.add(new lineaCanvas(color, x1, y1, x2, y2, lineWidth));
                     }
+                    List listaFiguras = elemento.getChildren("figura");
+                    for (int j = 0; j < listaFiguras.size(); j++) {
+                        Element figura = (Element) listaFiguras.get(j);
+                        String color = figura.getAttributeValue("color");
+                        String x = figura.getAttributeValue("x");
+                        String y = figura.getAttributeValue("y");
+                        String tamanio = figura.getAttributeValue("tamanio");
+                        String tipo = figura.getAttributeValue("tipo");
+                        figurasC.add(new figuraCanvas(color, x, y, tamanio, tipo));
+                    }
                     break;
                 }
             }
 
             if (existe) {
-                String json = new Gson().toJson(ejercicios);
-
+                //String json = new Gson().toJson(new archivosCanvas(figurasC, ejercicios));
+                String json = "";
+                if (request.getParameter("fig") != null) {
+                    json = new Gson().toJson(figurasC);
+                } else {
+                    json = new Gson().toJson(ejercicios);
+                }
                 response.getWriter().print(json);
             }
         } catch (Exception e) {

@@ -26,17 +26,7 @@ const DibujaCir = document.getElementById('DibujaCir');
 const DibujaRec = document.getElementById('DibujaRec');
 const DibujaTrian = document.getElementById('DibujaTrian');
 const DibujaEstr = document.getElementById('DibujaEstr');
-const clear = document.getElementById('clear');
-var color,
-    rad,
-    altura,
-    ancho,
-    tam,
-    circulo,
-    rectangulo,
-    triangulo,
-    Estrella,
-    confirmar;
+//const clear = document.getElementById('clear');
 
 /* Eventos para los botones */
 btnBlack.addEventListener('click', setColor);
@@ -172,6 +162,56 @@ TogetherJS.hub.on('togetherjs.hello', function(msg) {
         type: 'drawAllLines',
         lines: lines
     });
+    TogetherJS.send({
+        type: 'drawAllFigures',
+        figuras: figuras
+    });
+});
+
+TogetherJS.hub.on('drawAllFigures', function(msg) {
+    if (!msg.sameUrl) {
+        return;
+    }
+    console.log(msg.figuras);
+    for (i in msg.figuras) {
+        switch (msg.figuras[i].tipo) {
+            case 'rectangulo':
+                drawRect(
+                    msg.figuras[i].color,
+                    msg.figuras[i].x,
+                    msg.figuras[i].y,
+                    msg.figuras[i].tamanio
+                );
+                break;
+            case 'circulo':
+                drawCircle(
+                    msg.figuras[i].color,
+                    msg.figuras[i].x,
+                    msg.figuras[i].y,
+                    msg.figuras[i].tamanio
+                );
+                break;
+            case 'triangulo':
+                drawTriangulo(
+                    msg.figuras[i].color,
+                    msg.figuras[i].x,
+                    msg.figuras[i].y,
+                    msg.figuras[i].tamanio
+                );
+                break;
+            case 'estrella':
+                drawEstrella(
+                    msg.figuras[i].color,
+                    msg.figuras[i].x,
+                    msg.figuras[i].y,
+                    msg.figuras[i].tamanio
+                );
+                break;
+            default:
+                break;
+        }
+    }
+    figuras = msg.figuras;
 });
 
 TogetherJS.hub.on('drawAllLines', function(msg) {
@@ -195,171 +235,229 @@ TogetherJS.hub.on('drawAllLines', function(msg) {
 
 /* Funciones dibujar figuras */
 
+function drawCircle(color, x, y, rad) {
+    context.beginPath();
+    context.fillStyle = color;
+    context.arc(x, y, rad, 0, Math.PI * 2, true);
+    context.fill();
+    var objeto = new Object();
+    objeto['color'] = color;
+    objeto['x'] = x;
+    objeto['y'] = y;
+    objeto['tipo'] = 'circulo';
+    objeto['tamanio'] = rad;
+    figuras.push(objeto);
+}
+
+function drawRect(color, x, y, ancho) {
+    context.beginPath();
+    context.fillStyle = color;
+    context.rect(x - ancho / 2, y - ancho / 2, ancho, ancho);
+    context.fill();
+    var objeto = new Object();
+    objeto['color'] = color;
+    objeto['x'] = x;
+    objeto['y'] = y;
+    objeto['tipo'] = 'rectangulo';
+    objeto['tamanio'] = ancho;
+    figuras.push(objeto);
+}
+
+function drawTriangulo(color, x, y, tam) {
+    context.beginPath();
+    context.fillStyle = color;
+    context.moveTo(x, y);
+    context.lineTo(x + 60 * tam, y);
+    context.lineTo(x + 30 * tam, y - 60 * tam);
+    context.fill();
+    var objeto = new Object();
+    objeto['color'] = color;
+    objeto['x'] = x;
+    objeto['y'] = y;
+    objeto['tipo'] = 'triangulo';
+    objeto['tamanio'] = tam;
+    figuras.push(objeto);
+}
+
+function drawEstrella(color, x, y, tam) {
+    var outerRadius = 16 * tam;
+    var innerRadius = (16 * tam) / 2;
+    var rot = (Math.PI / 2) * 3;
+    var ex = x;
+    var ey = y;
+    var step = Math.PI / 5;
+    context.beginPath();
+    context.fillStyle = color;
+    context.moveTo(x, y - outerRadius);
+    for (i = 0; i < 5; i++) {
+        ex = x + Math.cos(rot) * outerRadius;
+        ey = y + Math.sin(rot) * outerRadius;
+        context.lineTo(ex, ey);
+        rot += step;
+
+        ex = x + Math.cos(rot) * innerRadius;
+        ey = y + Math.sin(rot) * innerRadius;
+        context.lineTo(ex, ey);
+        rot += step;
+    }
+    context.lineTo(x, y - outerRadius);
+    context.closePath();
+    context.lineWidth = 5;
+    context.fill();
+    var objeto = new Object();
+    objeto['color'] = color;
+    objeto['x'] = x;
+    objeto['y'] = y;
+    objeto['tipo'] = 'estrella';
+    objeto['tamanio'] = tam;
+    figuras.push(objeto);
+}
+
 //Dibujar Circulo
 DibujaCir.onclick = function() {
     console.log(figuras);
-    var objeto = new Object();
+    dibuja = false;
     color = document.getElementById('inputColor').value;
     rad = parseInt(document.getElementById('inputTam').value);
     canvas.addEventListener('click', onClick);
     function onClick(event) {
         x = event.pageX - this.offsetLeft;
         y = event.pageY - this.offsetTop;
-        circulo.beginPath();
         if (rad) {
-            circulo.arc(x, y, rad, 0, Math.PI * 2, true);
-            objeto['tamanio'] = rad;
+            drawCircle(color, x, y, rad);
         } else {
-            circulo.arc(x, y, 20, 0, Math.PI * 2, true);
-            objeto['tamanio'] = 20;
+            drawCircle(color, x, y, 20);
+            rad = 20;
         }
-        circulo.fill();
         canvas.removeEventListener('click', onClick);
-        objeto['color'] = color;
-        objeto['x'] = x;
-        objeto['y'] = y;
-        objeto['tipo'] = 'circulo';
-        figuras.push(objeto);
+        if (TogetherJS.running) {
+            TogetherJS.send({
+                type: 'drawCircle',
+                color: color,
+                x: x,
+                y: y,
+                tamanio: rad
+            });
+        }
     }
-
-    (function() {
-        circulo = canvas.getContext('2d');
-        if (color) circulo.fillStyle = color;
-        else circulo.fillStyle = 'red';
-    })();
 };
+
+TogetherJS.hub.on('drawCircle', function(msg) {
+    if (!msg.sameUrl) {
+        return;
+    }
+    drawCircle(msg.color, msg.x, msg.y, msg.tamanio);
+});
 
 //Dibujar Rectangulo
 DibujaRec.onclick = function() {
-    var objeto = new Object();
     color = document.getElementById('inputColor').value;
     ancho = parseInt(document.getElementById('inputTam').value);
-    altura = parseInt(document.getElementById('inputTam').value);
     canvas.addEventListener('click', onClick);
     function onClick(evt) {
         x = event.pageX - this.offsetLeft;
         y = event.pageY - this.offsetTop;
-        rectangulo.beginPath();
         if (ancho) {
-            rectangulo.rect(x - ancho / 2, y - altura / 2, ancho, altura);
-            objeto['tamanio'] = ancho;
+            drawRect(color, x, y, ancho);
         } else {
-            rectangulo.rect(x - 20 / 2, y - 20 / 2, 20, 20);
-            objeto['tamanio'] = 20;
+            drawRect(color, x, y, 20);
+            ancho = 20;
         }
-        rectangulo.fill();
-        objeto['color'] = color;
-        objeto['x'] = x;
-        objeto['y'] = y;
-        objeto['tipo'] = 'rectangulo';
-        figuras.push(objeto);
         canvas.removeEventListener('click', onClick);
+        if (TogetherJS.running) {
+            TogetherJS.send({
+                type: 'drawRect',
+                color: color,
+                x: x,
+                y: y,
+                tamanio: ancho
+            });
+        }
     }
-
-    (function() {
-        rectangulo = canvas.getContext('2d');
-        if (color) rectangulo.fillStyle = color;
-        else rectangulo.fillStyle = 'red';
-    })();
 };
+
+TogetherJS.hub.on('drawRect', function(msg) {
+    if (!msg.sameUrl) {
+        return;
+    }
+    drawRect(msg.color, msg.x, msg.y, msg.tamanio);
+});
 
 //Dibujar Triangulo
 DibujaTrian.onclick = function() {
-    var objeto = new Object();
     let color = document.getElementById('inputColor').value;
     let tam = parseInt(document.getElementById('inputTam').value);
     canvas.addEventListener('click', onClick);
     function onClick(evt) {
         x = event.pageX - this.offsetLeft;
         y = event.pageY - this.offsetTop;
-        triangulo.beginPath();
         if (tam) {
-            triangulo.moveTo(x, y);
-            triangulo.lineTo(x + 60 * tam, y);
-            triangulo.lineTo(x + 30 * tam, y - 60 * tam);
-            objeto['tamanio'] = tam;
+            drawTriangulo(color, x, y, tam);
         } else {
-            triangulo.moveTo(x, y);
-            triangulo.lineTo(x + 60, y);
-            triangulo.lineTo(x + 30, y - 60);
-            objeto['tamanio'] = 1;
+            drawTriangulo(color, x, y, 1);
+            tam = 1;
         }
-        triangulo.closePath();
-        triangulo.fill();
-        objeto['color'] = color;
-        objeto['x'] = x;
-        objeto['y'] = y;
-        objeto['tipo'] = 'triangulo';
-        figuras.push(objeto);
         canvas.removeEventListener('click', onClick);
+        if (TogetherJS.running) {
+            TogetherJS.send({
+                type: 'drawTriangulo',
+                color: color,
+                x: x,
+                y: y,
+                tamanio: tam
+            });
+        }
     }
-
-    (function() {
-        triangulo = canvas.getContext('2d');
-        if (color) triangulo.fillStyle = color;
-        else triangulo.fillStyle = 'red';
-    })();
 };
 
-//Limpiar lienzo
-clear.onclick = function() {
-    context.clearRect(0, 0, 1200, 500);
-    lines = [];
-    figuras = [];
-};
+TogetherJS.hub.on('drawTriangulo', function(msg) {
+    if (!msg.sameUrl) {
+        return;
+    }
+    console.log(msg.color, msg.x, msg.y, msg.tamanio);
+    drawTriangulo(msg.color, msg.x, msg.y, msg.tamanio);
+});
 
 //Dibujar estrella
 DibujaEstr.onclick = function() {
-    var objeto = new Object();
     let color = document.getElementById('inputColor').value;
     let tam = parseInt(document.getElementById('inputTam').value);
-    Estrella = canvas.getContext('2d');
     canvas.addEventListener('click', onClick);
     function onClick(evt) {
         x = event.pageX - this.offsetLeft;
         y = event.pageY - this.offsetTop;
         if (tam) {
-            drawStar(x, y, 5, 16 * tam, (16 * tam) / 2);
-            objeto['tamanio'] = tam;
+            drawEstrella(color, x, y, tam);
         } else {
-            drawStar(x, y, 5, 16, 8);
-            objeto['tamanio'] = 1;
+            drawEstrella(color, x, y, 1);
+            tam = 1;
         }
-        objeto['color'] = color;
-        objeto['x'] = x;
-        objeto['y'] = y;
-        objeto['tipo'] = 'estrella';
-        figuras.push(objeto);
         canvas.removeEventListener('click', onClick);
-    }
-
-    function drawStar(cx, cy, spikes, outerRadius, innerRadius) {
-        var rot = (Math.PI / 2) * 3;
-        var ex = cx;
-        var ey = cy;
-        var step = Math.PI / spikes;
-        Estrella.strokeSyle = '#000';
-        Estrella.beginPath();
-        Estrella.moveTo(cx, cy - outerRadius);
-        for (i = 0; i < spikes; i++) {
-            ex = cx + Math.cos(rot) * outerRadius;
-            ey = cy + Math.sin(rot) * outerRadius;
-            Estrella.lineTo(ex, ey);
-            rot += step;
-
-            ex = cx + Math.cos(rot) * innerRadius;
-            ey = cy + Math.sin(rot) * innerRadius;
-            Estrella.lineTo(ex, ey);
-            rot += step;
+        if (TogetherJS.running) {
+            TogetherJS.send({
+                type: 'drawEstrella',
+                color: color,
+                x: x,
+                y: y,
+                tamanio: tam
+            });
         }
-        Estrella.lineTo(cx, cy - outerRadius);
-        Estrella.closePath();
-        Estrella.lineWidth = 5;
-        if (color) Estrella.fillStyle = color;
-        else Estrella.fillStyle = 'orange';
-        Estrella.fill();
     }
 };
+
+TogetherJS.hub.on('drawEstrella', function(msg) {
+    if (!msg.sameUrl) {
+        return;
+    }
+    drawEstrella(msg.color, msg.x, msg.y, msg.tamanio);
+});
+
+//Limpiar lienzo
+// clear.onclick = function() {
+//     context.clearRect(0, 0, 1200, 500);
+//     lines = [];
+//     figuras = [];
+// };
 
 /* Guadar Archivo*/
 
@@ -376,6 +474,7 @@ function saveCanvas() {
         url: 'guardarCanvas',
         data: {
             datos: JSON.stringify(lines),
+            figuras: JSON.stringify(figuras),
             usr: usr,
             idArchivo: ide,
             nombre: nombre

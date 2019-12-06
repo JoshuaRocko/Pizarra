@@ -64,7 +64,7 @@ public class crearejercicio extends HttpServlet {
             out.println("<button id=\"DibujaRec\">Dibujar cuadrado</button>");
             out.println("<button id=\"DibujaTrian\">Dibujar triangulo</button>");
             out.println("<button id=\"DibujaEstr\">Dibujar Estrella</button>");
-            out.println("<button id=\"clear\">Limpiar Lienzo</button>");
+            //out.println("<button id=\"clear\">Limpiar Lienzo</button>");
             out.println("<button onclick=\"TogetherJS(this); return false;\" class=\"btn btn1\">Start TogetherJS</button>");
             out.println("<button type=\"button\" id=\"save\">Save</button>");
             out.println("<button type=\"button\" onClick=\"window.location.href='http://localhost:3000/main/'\">Back</button>");
