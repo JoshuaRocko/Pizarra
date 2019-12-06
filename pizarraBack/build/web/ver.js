@@ -170,4 +170,3 @@ context.lineCap = 'round';
 context.globalCompositeOperation = 'source-over';
 
 window.onload = dibujaCanvas;
-drawEstrella('black', 216, 309, 1);

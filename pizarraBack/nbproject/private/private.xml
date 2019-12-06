@@ -3,16 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Ricardo.PCMARIA/Documents/ESCOM/TW/proyecto/pizarraBack/src/java/servlets/copiarEjercicio.java</file>
-            <file>file:/C:/Users/Ricardo.PCMARIA/Documents/ESCOM/TW/proyecto/pizarraBack/web/ver.js</file>
-            <file>file:/C:/Users/Ricardo.PCMARIA/Documents/ESCOM/TW/proyecto/pizarraBack/web/scriptCanvas.js</file>
-            <file>file:/C:/Users/Ricardo.PCMARIA/Documents/ESCOM/TW/proyecto/pizarraBack/src/java/ldn/archivosCanvas.java</file>
-            <file>file:/C:/Users/Ricardo.PCMARIA/Documents/ESCOM/TW/proyecto/pizarraBack/src/java/servlets/guardarCanvas.java</file>
-            <file>file:/C:/Users/Ricardo.PCMARIA/Documents/ESCOM/TW/proyecto/pizarraBack/src/java/ldn/ejercicio.java</file>
-            <file>file:/C:/Users/Ricardo.PCMARIA/Documents/ESCOM/TW/proyecto/pizarraBack/src/java/servlets/cargarCanvasXML.java</file>
-            <file>file:/C:/Users/Ricardo.PCMARIA/Documents/ESCOM/TW/proyecto/pizarraBack/src/java/servlets/eliminarEjercicio.java</file>
-            <file>file:/C:/Users/Ricardo.PCMARIA/Documents/ESCOM/TW/proyecto/pizarraBack/src/java/ldn/figuraCanvas.java</file>
-            <file>file:/C:/Users/Ricardo.PCMARIA/Documents/ESCOM/TW/proyecto/pizarraBack/web/modificar.js</file>
+            <file>file:/C:/Users/JoshuaRocko/Desktop/web/pizarra/pizarraBack/src/java/servlets/guardarCanvas.java</file>
+            <file>file:/C:/Users/JoshuaRocko/Desktop/web/pizarra/pizarraBack/web/ver.js</file>
+            <file>file:/C:/Users/JoshuaRocko/Desktop/web/pizarra/pizarraBack/web/scriptCanvas.js</file>
         </group>
     </open-files>
 </project-private>
