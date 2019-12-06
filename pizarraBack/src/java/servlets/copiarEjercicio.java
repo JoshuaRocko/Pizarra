@@ -67,7 +67,7 @@ public class copiarEjercicio extends HttpServlet {
             if (existe) {
                 if (!nuevoNombre.equals(nombre)) {
                     Element archivo = new Element("archivo");
-                    archivo.setAttribute(new Attribute("numero", (contarTotalEjercicios(ruta, usr)) + ""));
+                    archivo.setAttribute(new Attribute("numero", (contarTotalEjercicios(ruta, usr) + 1) + ""));
                     archivo.setAttribute(new Attribute("nombre", nuevoNombre));
                     archivo.setAttribute(new Attribute("usuario", usr));
                     for (lineaCanvas linea : lineas) {
