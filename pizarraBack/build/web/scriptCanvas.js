@@ -247,6 +247,7 @@ function drawCircle(color, x, y, rad) {
     objeto['tipo'] = 'circulo';
     objeto['tamanio'] = rad;
     figuras.push(objeto);
+    console.log(figuras);
 }
 
 function drawRect(color, x, y, ancho) {
@@ -264,6 +265,7 @@ function drawRect(color, x, y, ancho) {
 }
 
 function drawTriangulo(color, x, y, tam) {
+    console.log(color, x, y, tam);
     context.beginPath();
     context.fillStyle = color;
     context.moveTo(x, y);
@@ -280,6 +282,7 @@ function drawTriangulo(color, x, y, tam) {
 }
 
 function drawEstrella(color, x, y, tam) {
+    console.log(color, x, y, tam);
     var outerRadius = 16 * tam;
     var innerRadius = (16 * tam) / 2;
     var rot = (Math.PI / 2) * 3;

@@ -22,6 +22,7 @@ function dibuja(lineas) {
     }
 }
 function drawCircle(color, x, y, rad) {
+    console.log(color, x, y, rad);
     context.beginPath();
     context.fillStyle = color;
     context.arc(x, y, rad, 0, Math.PI * 2, true);
@@ -29,6 +30,7 @@ function drawCircle(color, x, y, rad) {
 }
 
 function drawRect(color, x, y, ancho) {
+    console.log(color, x, y, ancho);
     context.beginPath();
     context.fillStyle = color;
     context.rect(x - ancho / 2, y - ancho / 2, ancho, ancho);
@@ -36,6 +38,7 @@ function drawRect(color, x, y, ancho) {
 }
 
 function drawTriangulo(color, x, y, tam) {
+    console.log(color, x, y, tam);
     context.beginPath();
     context.fillStyle = color;
     context.moveTo(x, y);
@@ -45,6 +48,7 @@ function drawTriangulo(color, x, y, tam) {
 }
 
 function drawEstrella(color, x, y, tam) {
+    console.log(color, x, y, tam);
     var outerRadius = 16 * tam;
     var innerRadius = (16 * tam) / 2;
     var rot = (Math.PI / 2) * 3;
@@ -77,33 +81,33 @@ function dibujaFiguras(figuras) {
             case 'rectangulo':
                 drawRect(
                     figuras[i].color,
-                    figuras[i].x,
-                    figuras[i].y,
-                    figuras[i].tamanio
+                    parseInt(figuras[i].x),
+                    parseInt(figuras[i].y),
+                    parseInt(figuras[i].tamanio)
                 );
                 break;
             case 'circulo':
                 drawCircle(
                     figuras[i].color,
-                    figuras[i].x,
-                    figuras[i].y,
-                    figuras[i].tamanio
+                    parseInt(figuras[i].x),
+                    parseInt(figuras[i].y),
+                    parseInt(figuras[i].tamanio)
                 );
                 break;
             case 'triangulo':
                 drawTriangulo(
                     figuras[i].color,
-                    figuras[i].x,
-                    figuras[i].y,
-                    figuras[i].tamanio
+                    parseInt(figuras[i].x),
+                    parseInt(figuras[i].y),
+                    parseInt(figuras[i].tamanio)
                 );
                 break;
             case 'estrella':
                 drawEstrella(
                     figuras[i].color,
-                    figuras[i].x,
-                    figuras[i].y,
-                    figuras[i].tamanio
+                    parseInt(figuras[i].x),
+                    parseInt(figuras[i].y),
+                    parseInt(figuras[i].tamanio)
                 );
                 break;
             default:
@@ -166,3 +170,4 @@ context.lineCap = 'round';
 context.globalCompositeOperation = 'source-over';
 
 window.onload = dibujaCanvas;
+drawEstrella('black', 216, 309, 1);
